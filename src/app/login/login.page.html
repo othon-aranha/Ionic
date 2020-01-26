@@ -5,21 +5,30 @@
 </ion-header>
 
 <ion-content fullscreen>
+  <ion-item>
+    <ion-label position="floating">Login</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Senha</ion-label>
+    <ion-input type="password"></ion-input>
+  </ion-item>
   
 </ion-content>
 
 <ion-footer>
-  
+  <ion-toolbar color="primary">
     <ion-buttons left>
-    <ion-button (click)="efetuarLogin()">
+    <ion-button fill="solid" color="success" (click)="efetuarLogin()">
       Login
       <ion-icon slot="start" name="log-in"></ion-icon>
     </ion-button>
 
-    <ion-button float-right>
+    <ion-button fill="solid" color="danger">
       Sair
       <ion-icon slot="end" name="exit"></ion-icon>
     </ion-button>
   </ion-buttons>  
-  
+  </ion-toolbar>
 </ion-footer>
