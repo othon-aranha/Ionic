@@ -17,6 +17,7 @@ export class MeusPedidosPage implements OnInit {
   constructor(private route: Router) { }
 
   contarItensMarcados(): void {
+    this.checkedItems = 0;
     this.form.forEach(element => {
       if (element.isChecked) {
         this.checkedItems = ++this.checkedItems;

@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   }
 
   efetuarLogin(): void {
-    this.route.navigate(['categoria']);
+    this.route.navigate(['tribunal']);
   }
 
 }

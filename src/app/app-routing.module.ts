@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'tab-categoria',
     loadChildren: () => import('./tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
   },
+  {
+    path: 'tribunal',
+    loadChildren: () => import('./tribunal/tribunal.module').then( m => m.TribunalPageModule)
+  },
 ];
 
 @NgModule({
