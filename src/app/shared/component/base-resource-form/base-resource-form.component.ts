@@ -72,6 +72,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
+  clearValuesForm(): void {
+    Object.keys(this.resourceForm.controls).forEach((key) => {
+       this.resourceForm.get(key).setValue(null);
+     });
+  }
+
   validForm(): boolean {
     let retorno = true;
     if ( this.resourceForm.status === 'INVALID'  ) {
@@ -170,9 +176,11 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
     // redirect/reload component page
-    this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true}).then(
-      () => this.router.navigate([baseComponentPath, resource.id, 'edit'])
-    );
+    if ( resource.id ) {
+      this.router.navigateByUrl(baseComponentPath, {skipLocationChange: true}).then(
+        () => this.router.navigate([baseComponentPath, resource.id, 'edit'])
+      );
+    }
   }
 
 

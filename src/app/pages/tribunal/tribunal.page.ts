@@ -1,13 +1,13 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 
-import { BaseResourceFormComponent } from '../shared/component/base-resource-form/base-resource-form.component';
-import { Tribunal } from '../model/tribunal';
-import { TribunalService } from '../service/tribunal.service';
+import { BaseResourceFormComponent } from '../../shared/component/base-resource-form/base-resource-form.component';
+import { Tribunal } from '../../model/tribunal';
+import { TribunalService } from '../../service/tribunal.service';
 
 
 @Component({
-  selector: 'app-tribunal',
+  selector: 'page-tribunal',
   templateUrl: './tribunal.page.html',
   styleUrls: ['./tribunal.page.scss'],
 })
@@ -22,10 +22,12 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
   }
 
   protected buildResourceForm() {
-    this.resourceForm = this.formBuilder.group({
+      if ( this.currentAction === 'edit' ) {
+      this.resourceForm = this.formBuilder.group({
       id: new FormControl(this.id, [Validators.required, Validators.minLength(1)] ),
       nome: new FormControl(this.resource.nome, [Validators.required, Validators.minLength(6)] ),
-      sigla: new FormControl({value: this.resource.sigla, disabled: ( this.editing ) } , [Validators.required, Validators.minLength(3)] ),
+      sigla: new FormControl({value: this.resource.sigla, disabled: ( this.editing ) } ,
+      [Validators.required, Validators.minLength(3), Validators.maxLength(6)] ),
       logradouro: new FormControl(this.resource.logradouro, [Validators.required, Validators.minLength(10)] ),
       bairro: new FormControl(this.resource.bairro, [Validators.required, Validators.minLength(3)] ),
       uf: new FormControl(this.resource.uf, [Validators.required, Validators.minLength(2), Validators.maxLength(2)] ),
@@ -38,8 +40,27 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
       codigoMunicipioIBGE: new FormControl(this.resource.codigoMunicipioIBGE, [Validators.required, Validators.minLength(3)] ),
       codigoNaturezaJuridica: new FormControl(this.resource.codigoNaturezaJuridica, [] ),
       email: new FormControl(this.resource.email, [Validators.required, Validators.minLength(6), Validators.email] ),
-      acesso: new FormControl(this.resource.acesso)
-     });
+      acesso: new FormControl(this.resource.acesso)});
+    } else {
+      this.resourceForm = this.formBuilder.group({
+        id: new FormControl(this.id, [Validators.minLength(1)] ),
+        nome: new FormControl(this.resource.nome, [Validators.required, Validators.minLength(6)] ),
+        sigla: new FormControl({value: this.resource.sigla, disabled: ( this.editing ) } ,
+        [Validators.required, Validators.minLength(3), Validators.maxLength(6)] ),
+        logradouro: new FormControl(this.resource.logradouro, [Validators.required, Validators.minLength(10)] ),
+        bairro: new FormControl(this.resource.bairro, [Validators.required, Validators.minLength(3)] ),
+        uf: new FormControl(this.resource.uf, [Validators.required, Validators.minLength(2), Validators.maxLength(2)] ),
+        cep: new FormControl(this.resource.cep, [Validators.required, Validators.minLength(8)] ),
+        cidade: new FormControl(this.resource.cidade, [Validators.required, Validators.minLength(3)] ),
+        telefone: new FormControl(this.resource.telefone, [Validators.required, Validators.minLength(11)] ),
+        cgc: new FormControl(this.resource.cgc, [Validators.required, Validators.minLength(14)] ),
+        numeroContrato: new FormControl(this.resource.numeroContrato, [Validators.required, Validators.minLength(3)] ),
+        descricaoContrato: new FormControl(this.resource.descricaoContrato, [Validators.required, Validators.minLength(6)] ),
+        codigoMunicipioIBGE: new FormControl(this.resource.codigoMunicipioIBGE, [Validators.required, Validators.minLength(3)] ),
+        codigoNaturezaJuridica: new FormControl(this.resource.codigoNaturezaJuridica, [] ),
+        email: new FormControl(this.resource.email, [Validators.required, Validators.minLength(6), Validators.email] ),
+        acesso: new FormControl(this.resource.acesso)});
+     }
   }
 
   ngOnInit() {
@@ -93,6 +114,7 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
 
   submitForm(): void {
     super.submitForm();
+    this.clearValuesForm();
   }
 
 

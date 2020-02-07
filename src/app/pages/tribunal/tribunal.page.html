@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title class="ion-text-center">Tribunal</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
      
     <ion-item>
       <ion-label position="floating">Sigla</ion-label>
-      <ion-input formControlName="sigla"></ion-input>
+      <ion-input minlength="3" maxlength="6" formControlName="sigla"></ion-input>
     </ion-item>
   
     <ion-item>
@@ -47,7 +47,7 @@
 
     <ion-item>
       <ion-label position="floating">CEP</ion-label>
-      <ion-input formControlName="cep" autocomplete="on" type="number" required></ion-input>
+      <ion-input formControlName="cep" minlength="8" autocomplete="on" type="number" required></ion-input>
     </ion-item>
 
     <ion-item>
@@ -57,12 +57,12 @@
 
     <ion-item>
       <ion-label position="floating">Telefone</ion-label>
-      <ion-input formControlName="telefone" type="tel" required></ion-input>
+      <ion-input formControlName="telefone" minlength="11" maxlength="12" type="tel" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">CGC</ion-label>
-      <ion-input formControlName="cgc" min="14" maxlength="14" type="number" required></ion-input>
+      <ion-input formControlName="cgc" minlength="14" maxlength="14" type="number" required></ion-input>
     </ion-item>
 
     <ion-card>

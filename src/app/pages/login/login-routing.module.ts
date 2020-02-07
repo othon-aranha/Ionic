@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'tribunal',
-    loadChildren: () => import('./../tribunal/tribunal.module').then( m => m.TribunalPageModule)
+    loadChildren: () => import('../tribunal/tribunal.module').then( m => m.TribunalPageModule)
   }
 ];
 

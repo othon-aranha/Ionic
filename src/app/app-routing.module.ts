@@ -5,11 +5,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'categoria',
-    loadChildren: () => import('./categoria/categoria.module').then( m => m.CategoriaPageModule)
+    loadChildren: () => import('./pages/categoria/categoria.module').then( m => m.CategoriaPageModule)
   },
   {
     path: 'tabs',
@@ -17,23 +17,23 @@ const routes: Routes = [
   },
   {
     path: 'produtos',
-    loadChildren: () => import('./produtos/produtos.module').then( m => m.ProdutosPageModule)
+    loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule)
   },
   {
     path: 'meus-pedidos',
-    loadChildren: () => import('./meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
+    loadChildren: () => import('./pages/meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
   },
   {
     path: 'minha-conta',
-    loadChildren: () => import('./minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
+    loadChildren: () => import('./pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
   },
   {
     path: 'tab-categoria',
-    loadChildren: () => import('./tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
+    loadChildren: () => import('./pages/tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
   },
   {
     path: 'tribunal',
-    loadChildren: () => import('./tribunal/tribunal.module').then( m => m.TribunalPageModule)
+    loadChildren: () => import('./pages/tribunal/tribunal.module').then( m => m.TribunalPageModule)
   },
 ];
 

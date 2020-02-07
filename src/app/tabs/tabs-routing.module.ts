@@ -10,15 +10,15 @@ const routes: Routes = [
   },
   {
     path: 'tab-categoria',
-    loadChildren: () => import('../tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
+    loadChildren: () => import('../pages/tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
   },
   {
     path: 'meus-pedidos',
-    loadChildren: () => import('../meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
+    loadChildren: () => import('../pages/meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
   },
   {
     path: 'minha-conta',
-    loadChildren: () => import('../minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
+    loadChildren: () => import('../pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
   }
 ];
 
