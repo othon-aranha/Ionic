@@ -4,6 +4,7 @@ import { Validators, FormControl } from '@angular/forms';
 import { BaseResourceFormComponent } from '../../shared/component/base-resource-form/base-resource-form.component';
 import { Tribunal } from '../../model/tribunal';
 import { TribunalService } from '../../service/tribunal.service';
+import { AlertService } from 'src/app/shared/providers/alert/alert.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
   checked = false;
 
 
-  constructor(protected tribunalService: TribunalService, protected injector: Injector) {
+  constructor(protected tribunalService: TribunalService, protected injector: Injector, protected alertSrv: AlertService) {
     super(injector, new Tribunal(), tribunalService, Tribunal.fromJson);
   }
 
@@ -114,7 +115,6 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
 
   submitForm(): void {
     super.submitForm();
-    this.clearValuesForm();
   }
 
 

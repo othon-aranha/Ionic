@@ -13,7 +13,7 @@ export class AlertService {
 
   }
 
-  async toast(title: string, position: string): Promise<void> {
+  async toast(title: string, position: string) {
     const toast = await this.toastCtrl.create({ message: title,
     position: position === 'top' || position === 'bottom' || position === 'middle' ? position : 'top', duration: 3000 });
     toast.present();
@@ -28,8 +28,9 @@ export class AlertService {
 
     await alert.present();
   }
+
   async Confirm(ptitle: string, pmessage: string, callback: any) {
-    const alert = await this.alertCtrl.create({
+    const alert = this.alertCtrl.create({
       header: ptitle,
       message: `Mensagem <strong>${pmessage}</strong>!!!`,
       buttons: [
@@ -48,6 +49,8 @@ export class AlertService {
         }
       ]
     });
+
+    await (await alert).present();
 }
 
 }

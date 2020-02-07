@@ -1,3 +1,4 @@
+import { AlertService } from 'src/app/shared/providers/alert/alert.service';
 import { OnInit, AfterContentChecked, Injector } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,6 +27,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected route: ActivatedRoute;
   protected router: Router;
   protected formBuilder: FormBuilder;
+  protected alertSrv: AlertService;
 
   constructor(
     protected injector: Injector,
@@ -36,6 +38,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.route = this.injector.get(ActivatedRoute);
     this.router = this.injector.get(Router);
     this.formBuilder = this.injector.get(FormBuilder);
+    this.alertSrv = this.injector.get(AlertService);
   }
 
   getParamId() {
@@ -61,14 +64,16 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   submitForm() {
     this.submittingForm = true;
     if ( this.validForm() ) {
-      if ( this.currentAction === 'new' ) {
-        this.FieldKeyReadOnly = false;
-        this.createResource();
-      } else { // currentAction == "edit"
-        this.FieldKeyReadOnly = true;
-        this.resourceForm.get('id').setValue(this.id);
-        this.updateResource();
-      }
+      this.alertSrv.Confirm('Confirmação', 'Confirma a gravação', () => {
+        if ( this.currentAction === 'new' ) {
+          this.FieldKeyReadOnly = false;
+          this.createResource();
+        } else { // currentAction == "edit"
+          this.FieldKeyReadOnly = true;
+          this.resourceForm.get('id').setValue(this.id);
+          this.updateResource();
+        }
+      });
     }
   }
 
@@ -169,6 +174,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
 
   protected actionsForSuccess(resource: T) {
+    this.alertSrv.toast('Solicitação processada com sucesso!', 'top');
     // toastr.success('Solicitação processada com sucesso!');
     this.msgs = [];
     this.msgs.push({ severity: 'success', summary: 'Solicitação processada com sucesso!'});
@@ -185,7 +191,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
 
   protected actionsForError(error) {
-    // toastr.error('Ocorreu um erro ao processar a sua solicitação!');
+    this.alertSrv.toast('Ocorreu um erro ao processar a sua solicitação!', 'top');
     this.msgs = [];
     this.msgs.push({ severity: 'error', summary: 'Ocorreu um erro ao processar a sua solicitação!'});
 
