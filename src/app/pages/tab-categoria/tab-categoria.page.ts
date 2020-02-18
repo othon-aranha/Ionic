@@ -20,6 +20,6 @@ export class TabCategoriaPage implements OnInit {
   }
 
   retornar(): void {
-    this.route.navigate(['menu-principal']);
+    this.route.navigate(['tabs']);
   }
 }

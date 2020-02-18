@@ -14,7 +14,7 @@ export class MinhaContaPage implements OnInit {
   ngOnInit() { }
 
   retornar(): void {
-    this.route.navigate(['menu-principal']);
+    this.route.navigate(['tabs']);
   }
 
 }

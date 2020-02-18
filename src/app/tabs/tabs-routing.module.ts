@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'minha-conta',
     loadChildren: () => import('../pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
+  },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('../pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   }
 ];
 
