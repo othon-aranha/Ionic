@@ -1,0 +1,36 @@
+<ion-menu>
+
+  <ion-content>
+
+    <img src="assets/icon/favicon.png" class="menu-logo"/>
+
+    <ion-list>
+      <ion-list-header color="primary">
+        Cadastro
+      </ion-list-header>
+      <ion-item *ngFor="let menuItem of appMenuItems" [color]="menuItem.color">
+        <button menuClose (click)="openPage(menuItem)"> 
+        <ion-icon  item-left [name]="menuItem.icon"></ion-icon>       
+        </button>
+        <ion-label>{{menuItem.title}}</ion-label>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Menu Principal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-footer>
+    <ion-toolbar color="primary">
+    <ion-title class="ion-text-center"></ion-title>
+  </ion-toolbar>
+  </ion-footer>
+</div>

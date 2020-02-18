@@ -30,7 +30,7 @@ export class MeusPedidosPage implements OnInit {
   }
 
   retornar(): void {
-    this.route.navigate(['']);
+    this.route.navigate(['menu-principal']);
   }
 
 }

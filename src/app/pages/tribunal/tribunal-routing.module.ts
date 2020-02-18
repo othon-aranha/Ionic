@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TribunalPage
+  },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   }
 ];
 

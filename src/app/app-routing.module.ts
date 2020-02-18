@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'tribunal',
     loadChildren: () => import('./pages/tribunal/tribunal.module').then( m => m.TribunalPageModule)
   },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },
 ];
 
 @NgModule({

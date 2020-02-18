@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 
@@ -5,6 +6,7 @@ import { BaseResourceFormComponent } from '../../shared/component/base-resource-
 import { Tribunal } from '../../model/tribunal';
 import { TribunalService } from '../../service/tribunal.service';
 import { AlertService } from 'src/app/shared/providers/alert/alert.service';
+import { MenuPrincipalPage } from '../menu-principal/menu-principal.page';
 
 
 @Component({
@@ -16,7 +18,6 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
   ufs = [];
   editing = false;
   checked = false;
-
 
   constructor(protected tribunalService: TribunalService, protected injector: Injector, protected alertSrv: AlertService) {
     super(injector, new Tribunal(), tribunalService, Tribunal.fromJson);
@@ -117,5 +118,8 @@ export class TribunalPage extends BaseResourceFormComponent<Tribunal> implements
     super.submitForm();
   }
 
+  retornar(): void {
+    this.router.navigate(['menu-principal']);
+  }
 
 }

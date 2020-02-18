@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPage } from './login.page';
 
+
 const routes: Routes = [
   {
     path: '', component: LoginPage
   },
   {
-    path: 'tribunal',
-    loadChildren: () => import('../tribunal/tribunal.module').then( m => m.TribunalPageModule)
+    path: 'menu-principal',
+    loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   }
 ];
 

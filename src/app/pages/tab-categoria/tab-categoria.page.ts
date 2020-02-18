@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
@@ -8,7 +9,7 @@ import { Location } from '@angular/common';
 })
 export class TabCategoriaPage implements OnInit {
 
-  constructor(private location: Location) { }
+  constructor(private route: Router,  private location: Location) { }
 
   ngOnInit() {
 
@@ -16,5 +17,9 @@ export class TabCategoriaPage implements OnInit {
 
   voltar(): void {
     this.location.back();
+  }
+
+  retornar(): void {
+    this.route.navigate(['menu-principal']);
   }
 }

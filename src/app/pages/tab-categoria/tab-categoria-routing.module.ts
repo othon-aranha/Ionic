@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: TabCategoriaPage
-  }
+  },
+  {
+    path: 'menu-principal',
+    loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  } 
 ];
 
 @NgModule({
