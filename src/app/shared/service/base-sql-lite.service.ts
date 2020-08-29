@@ -42,7 +42,7 @@ export abstract class BaseSqlLiteService<T extends BaseResourceModel>
     .catch((e) => console.error(e));
   }
   
-  get(id: number): any {
+  get(id: string): any {
       this.dbProvider.get_DB()
       .then((db: SQLiteObject) => {
         let sql = 'select * from ' + this.getTableName() + ' where id = ?';

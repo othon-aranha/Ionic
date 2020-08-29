@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'list-reservas',
     loadChildren: () => import('./reservas/list-reservas/list-reservas.module').then( m => m.ListReservasPageModule)
+  },
+  {
+    path: 'base-sqlite-form',
+    loadChildren: () => import('./shared/component/base-sqlite-form/base-sqlite-form.module').then( m => m.BaseSqliteFormPageModule)
   }
 ];
 
