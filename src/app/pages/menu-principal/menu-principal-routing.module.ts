@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('../categoria/categoria-routing.module').then( m => m.CategoriaPageRoutingModule)
+  },
+  {
+    path: 'reservas',
+    loadChildren: () => import('../reservas/reservas-routing.module').then( m => m.ReservasPageRoutingModule)
   }
 ];
 

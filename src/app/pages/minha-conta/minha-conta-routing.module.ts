@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MinhaContaPage
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('../../tabs/tabs-routing.module').then( m => m.TabsPageRoutingModule)
   }
 ];
 

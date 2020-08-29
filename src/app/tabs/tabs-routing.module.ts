@@ -9,8 +9,16 @@ const routes: Routes = [
     component: TabsPage
   },
   {
+    path: 'tabs',
+    component: TabsPage
+  },
+  {
     path: 'tab-categoria',
     loadChildren: () => import('../pages/tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
+  },
+  {
+    path: 'categoria-list',
+    loadChildren: () => import('../pages/categoria/categoria-list/categoria-list.module').then( m => m.CategoriaListPageModule)
   },
   {
     path: 'meus-pedidos',

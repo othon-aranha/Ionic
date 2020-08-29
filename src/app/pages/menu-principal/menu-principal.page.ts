@@ -32,7 +32,9 @@ export class MenuPrincipalPage implements OnInit {
    this.appMenuItems = [
         {title: 'Properties', color: 'secondary', /* component: null, */ icon: ''},
         {title: 'Brokers', color: 'secondary', /* component: null, */ icon: 'people'},
-        {title: 'Categoria', color: 'secondary',  route: 'tabs', /* component: null, */ icon: 'star'}
+        {title: 'Categoria', color: 'secondary',  route: 'tabs', /* component: null, */ icon: 'star'},
+        {title: 'Tribunal', color: 'secondary',  route: 'tribunal', /* component: null, */ icon: 'star'},
+        {title: 'Reserva', color: 'secondary',  route: 'reservas', /* component: null, */ icon: 'star'}
     ];
 
    this.accountMenuItems = [

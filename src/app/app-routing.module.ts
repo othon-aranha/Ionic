@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'menu-principal',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   },
+  {
+    path: 'reservas',
+    loadChildren: () => import('./pages/reservas/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'list-reservas',
+    loadChildren: () => import('./reservas/list-reservas/list-reservas.module').then( m => m.ListReservasPageModule)
+  }
 ];
 
 @NgModule({

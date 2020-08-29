@@ -6,9 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BaseResourceModel } from '../../model/base-resource-model';
 import { BaseResourceService } from '../../service/base-resource.service';
 
-import { switchMap } from 'rxjs/operators';
+import { switchMap, catchError } from 'rxjs/operators';
 
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Location } from '@angular/common';
 
 
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
@@ -26,6 +27,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   protected route: ActivatedRoute;
   protected router: Router;
+  protected location: Location;
   protected formBuilder: FormBuilder;
   protected alertSrv: AlertService;
 
@@ -37,6 +39,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   ) {
     this.route = this.injector.get(ActivatedRoute);
     this.router = this.injector.get(Router);
+    this.location = this.injector.get(Location);
     this.formBuilder = this.injector.get(FormBuilder);
     this.alertSrv = this.injector.get(AlertService);
   }
@@ -89,7 +92,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
       Object.keys(this.resourceForm.controls).forEach((key) => {
         if ( this.resourceForm.get(key).status === 'INVALID' ) {
-          // toastr.error('O campo ' + key + ' está inválido');
+          this.alertSrv.toast('O campo ' + key + ' está inválido', 'bottom');
           this.msgs = [];
           this.msgs.push({ severity: 'info', summary: 'O campo ' + key + ' está inválido'});
           retorno = false;

@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('../../tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'categoria-list',
+    loadChildren: () => import('./categoria-list/categoria-list.module').then( m => m.CategoriaListPageModule)
   }
 ];
 

@@ -15,12 +15,12 @@
       </ion-item>
      
     <ion-item>
-      <ion-label position="floating">Sigla</ion-label>
-      <ion-input minlength="3" maxlength="6" formControlName="sigla"></ion-input>
+      <ion-label position="floating">Sigla<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required minlength="3" maxlength="6" formControlName="sigla" oninput="handleSiglaValue(event)"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Nome do Tribunal</ion-label>
+      <ion-label required position="floating">Nome do Tribunal<ion-text color="danger">*</ion-text></ion-label>
       <ion-input formControlName="nome" autocomplete="on"></ion-input>
     </ion-item>
 
