@@ -1,36 +1,35 @@
 import { Injectable, Injector } from '@angular/core';
-import { Reserva } from '../model/reserva';
+import { Local } from '../model/local';
 import { BaseResourceService } from '../shared/service/base-resource.service';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-
-
-@Injectable()
-export class ReservaService extends BaseResourceService<Reserva>  {
+@Injectable({
+  providedIn: 'root'
+})
+export class LocalService extends BaseResourceService<Local> {
 
   constructor(protected injector: Injector) {
-    super('http://192.168.0.25:8082/reserva', injector, Reserva.fromJson);
+    super('http://192.168.0.25:8082/local', injector, Local.fromJson);
    }
 
    protected getAllSufix(): string {
-     return '/reservas';
-   }
+    return '/locais';
+  }
 
-   listaLocais(): Observable<Array<Reserva>> {
-    return this.http.get<Reserva[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
+  listaLocais(): Observable<Array<Local>> {
+    return this.http.get<Local[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
     .pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
     );
   }
 
-  recuperarLocal(id: string): Observable<Reserva> {
-    return this.http.get<Reserva>(this.apiPath + '/' + id, {headers: this.headers})
+  recuperarLocal(id: string): Observable<Local> {
+    return this.http.get<Local>(this.apiPath + '/' + id, {headers: this.headers})
     .pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
     );
   }
-
 }

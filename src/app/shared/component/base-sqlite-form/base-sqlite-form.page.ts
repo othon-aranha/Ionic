@@ -110,9 +110,9 @@ if (this.currentAction === 'edit') {
     switchMap(params => this.resourceService.get(params.get('id')))
   )
   .subscribe(
-    (resource) => {
-      this.resource = resource;
-      this.resourceForm.patchValue(resource); // binds loaded resource data to resourceForm
+    (res) => {
+      // this.resource = res;
+      this.resourceForm.patchValue(res); // binds loaded resource data to resourceForm
       this.onAfterloadResource();
     },
     (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
@@ -141,7 +141,7 @@ return 'Edição';
 protected createResource() {
 const recurso: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
-this.resourceService.create(recurso)
+this.resourceService.insert(recurso)
   .subscribe(
     resource => this.actionsForSuccess(resource),
     error => this.actionsForError(error)
@@ -191,6 +191,5 @@ if (error.status === 422) {
 
 
 protected abstract buildResourceForm(): void;
-}
 
 }

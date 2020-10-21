@@ -8,6 +8,7 @@ import { ReservasPageRoutingModule } from './reservas-routing.module';
 
 import { ReservasPage } from './reservas.page';
 import { ReservaService } from '../../service/reserva.service';
+import { ReservaListPage } from './form-list/reserva-list.page';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { ReservaService } from '../../service/reserva.service';
     IonicModule,
     ReservasPageRoutingModule
   ]
-  , declarations: [ReservasPage]
+  , declarations: [ReservasPage, ReservaListPage]
   , providers: [ReservaService]
 })
 export class ReservasPageModule {}

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BaseSqliteFormPageRoutingModule } from './base-sqlite-form-routing.module';
+import { ReservaListPageRoutingModule } from './reserva-list-routing.module';
 
-import { BaseSqliteFormPage } from './base-sqlite-form.page';
+import { ReservaListPage } from './reserva-list.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BaseSqliteFormPageRoutingModule
+    ReservaListPageRoutingModule
   ],
-  declarations: []
+  declarations: [ReservaListPage]
 })
-export class BaseSqliteFormPageModule {}
+export class ReservaListPageModule {}

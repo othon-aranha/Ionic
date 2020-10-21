@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BaseSqliteFormPage } from './base-sqlite-form.page';
+import { ReservaListPage } from './reserva-list.page';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: ReservaListPage
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BaseSqliteFormPageRoutingModule {}
+export class ReservaListPageRoutingModule {}

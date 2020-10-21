@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ListReservasPageRoutingModule } from './list-reservas-routing.module';
+import { UnidadeListPageRoutingModule } from './unidade-list-routing.module';
 
-import { ListReservasPage } from './list-reservas.page';
+import { UnidadeListPage } from './unidade-list.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListReservasPageRoutingModule
+    UnidadeListPageRoutingModule
   ],
-  declarations: [ListReservasPage]
+  declarations: [UnidadeListPage]
 })
-export class ListReservasPageModule {}
+export class UnidadeListPageModule {}

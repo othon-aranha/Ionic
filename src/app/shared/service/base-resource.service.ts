@@ -6,11 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { BaseService } from './base-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class BaseResourceService<T extends BaseResourceModel> {
+export abstract class BaseResourceService<T extends BaseResourceModel>  {
 
   protected http: HttpClient;
 

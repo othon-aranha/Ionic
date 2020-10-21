@@ -1,11 +1,11 @@
 {
-  "name": "NoFood.Ionic",
+  "name": "Condominio",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve –proxy-config proxy.conf.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,7 +19,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
-    "@capacitor/android": "^2.4.0",
+    "@capacitor/android": "^2.4.2",
     "@capacitor/core": "2.4.0",
     "@ionic-native/core": "^5.28.0",
     "@ionic-native/splash-screen": "^5.28.0",

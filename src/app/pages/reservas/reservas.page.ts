@@ -4,9 +4,14 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { AlertService } from 'src/app/shared/providers/alert/alert.service';
 
-import { BaseResourceFormComponent } from '../../shared/component/base-resource-form/base-resource-form.component';
 import { Reserva } from '../../model/reserva';
 import { ReservaService } from '../../service/reserva.service';
+import { BaseResourceFormComponent } from '../../shared/component/base-resource-form/base-resource-form.component';
+import { LocalService } from '../../service/local.service';
+import { Local } from '../../model/local';
+import { UnidadeService } from '../../service/unidade.service';
+import { Unidade } from '../../model/unidade';
+
 
 @Component({
   selector: 'app-reservas',
@@ -29,31 +34,70 @@ export class ReservasPage extends BaseResourceFormComponent<Reserva> implements 
   public anoMin: string;
   public anoMax: string;
 
-  constructor(protected reservaService: ReservaService, protected injector: Injector, protected alertSrv: AlertService) {
+  //Services
+  localService: LocalService;
+  unidadeService: UnidadeService;
+
+  locais: Local[];
+  unidades: Unidade[];
+
+  constructor(protected reservaService: ReservaService, protected injector: Injector, 
+              protected alertSrv: AlertService) {
     super(injector, new Reserva(), reservaService, Reserva.fromJson);
   }
 
   // constructor(private route: Router,  private location: Location) { }
 
   ngOnInit() {
+    this.localService = new LocalService(this.injector);
+    this.unidadeService = new UnidadeService(this.injector);
+    this.populaLocais();
+    this.populaUnidades();
+    
     this.anoMin = new Date().getFullYear().toString();
     this.anoMax = this.anoMin;
     super.ngOnInit();
   }
 
+  private populaLocais() {
+    // Carregando os dominios do acesso
+    this.locais = [];
+        this.localService.getAll()
+        .subscribe(
+          (resource) => {
+            this.locais = resource;
+          },
+          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+        );
+  }
+
+  private populaUnidades() {
+    // Carregando os dominios do acesso
+    this.unidades = [];
+        this.unidadeService.getAll()
+        .subscribe(
+          (resource) => {
+            this.unidades = resource;
+          },
+          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+        );
+  }
+
   protected buildResourceForm() {
     this.resourceForm = this.formBuilder.group({
-      id: new FormControl(this.resource.id, [Validators.required, Validators.minLength(1)] ),
       unidadeReserva: new FormControl(this.resource.unidadeReserva, [Validators.required, Validators.minLength(3), Validators.maxLength(4)] ),
       localReserva: new FormControl(this.resource.localReserva, [Validators.required, Validators.minLength(1)] ),
-      dataReserva: new FormControl(this.resource.dataReserva, [Validators.required] ),
-      horaIni: new FormControl(this.resource.horaIni, [Validators.required, Validators.minLength(5), Validators.maxLength(5)] ),
-      horaFim: new FormControl(this.resource.horaFim, [Validators.required, Validators.minLength(5), Validators.maxLength(5)] )
+      dtReserva: new FormControl(this.resource.dtReserva, [Validators.required] ),
+      dtSolicitacao: new FormControl(this.resource.dtSolicitacao, [Validators.required] ),
+      hrIniReserva: new FormControl(this.resource.hrIniReserva, [Validators.required] ),
+      hrFimReserva: new FormControl(this.resource.hrFimReserva, [Validators.required] )
     });
   }
 
   submitForm(): void {
+    this.resourceForm.get("dtSolicitacao").setValue(new Date());
     super.submitForm();
+    //
   }
 
   onAfterloadResource() {
@@ -62,7 +106,7 @@ export class ReservasPage extends BaseResourceFormComponent<Reserva> implements 
 
 
   voltar(): void {
-    this.location.back();
+    // this.location.back();
   }
 
   retornar(): void {

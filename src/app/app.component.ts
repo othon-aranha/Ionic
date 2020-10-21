@@ -14,14 +14,12 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    private dtbase: DatabaseService
+    private statusBar: StatusBar
   ) {
     this.initializeApp();
   }
 
   initializeApp() {
-    this.dtbase.cria_Database();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

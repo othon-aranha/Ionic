@@ -4,43 +4,48 @@ import { BaseCrud } from '../interfaces/base-crud';
 import { BaseResourceModel } from '../model/base-resource-model';
 import { DatabaseService } from '../providers/database.service';
 import { SQLiteObject } from '@ionic-native/sqlite/ngx';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class BaseSqlLiteService<T extends BaseResourceModel> 
-      implements BaseCrud  {
-  dbProvider: DatabaseService
+export abstract class BaseSqlLiteService<T extends BaseResourceModel> implements BaseCrud  {
+  dbProvider: DatabaseService;
 
   constructor(protected injector: Injector) { 
     this.dbProvider = injector.get(DatabaseService);
   }
 
-  private getTableName(): string {
+  protected getTableName(): string {
     let obj_name: T;
     return obj_name.constructor.name;
   }
 
-  public getAll():Array<any> {
-    let objs: Array<T> = [];
+  getAll(): Array<any> {
+    return null;
+  }
+  /*
+  getAll(): Array<any> {
     this.dbProvider.get_DB()
     .then((db: SQLiteObject) => {
+      let sql = 'select * from ' + this.getTableName();
 
-      db.executeSql('select * from ' + this.getTableName() , [])
-        .then((data: any) => {
-          if (data.rows.length > 0) {            
-            for (var i = 0; i < data.rows.length; i++) {
-              var obj = data.rows.item(i);
-              objs.push(obj);
-            }
-            return objs;
+      db.executeSql(sql)
+        .then((data: any[]) => {
+          if (data.length > 0) {
+            let item = data;
+            let obj: any;
+            for (const prop in item ) {
+               obj[prop] = item[prop] 
+            } 
+            return obj;
           }
+
+          return null;
         })
         .catch((e) => console.error(e));
     })
-    .catch((e) => console.error(e));
-  }
+    .catch((e) => console.error(e));    
+  } */
   
   get(id: string): any {
       this.dbProvider.get_DB()
@@ -67,7 +72,7 @@ export abstract class BaseSqlLiteService<T extends BaseResourceModel>
   }
 
 
-  remove(id: number):void {
+  remove(id: string): void {
       this.dbProvider.get_DB()
       .then((db: SQLiteObject) => {
         let sql = 'delete from ' + this.getTableName() + ' where id = ?';
@@ -79,7 +84,7 @@ export abstract class BaseSqlLiteService<T extends BaseResourceModel>
       .catch((e) => console.error(e));
   }
 
-  update(obj: T):void {
+  update(obj: BaseResourceModel): void {
     let sql;
     let data = [];
     this.dbProvider.get_DB()
@@ -105,7 +110,7 @@ export abstract class BaseSqlLiteService<T extends BaseResourceModel>
       .catch((e) => console.error(e));
   }
 
-  insert(obj: T):any {
+  insert(obj: BaseResourceModel): any {
     let sql;
     let data = [];
     this.dbProvider.get_DB()
@@ -139,13 +144,10 @@ export abstract class BaseSqlLiteService<T extends BaseResourceModel>
         sql = sql + ')';
  
         return db.executeSql(sql, data)
+          .then()
           .catch((e) => console.error(e));
       })
       .catch((e) => console.error(e));
-  }
-
-  create(obj: any): any {
-
   }
 
 }
