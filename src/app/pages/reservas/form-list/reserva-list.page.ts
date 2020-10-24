@@ -1,6 +1,8 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { LocalService } from 'src/app/service/local.service';
 import { Local } from '../../../model/local';
+import { ReservaService } from '../../../service/reserva.service';
+import { Reserva } from '../../../model/reserva';
 
 @Component({
   selector: 'app-reserva-list',
@@ -20,13 +22,22 @@ export class ReservaListPage implements OnInit {
 
   //Services
   localService: LocalService;
+  reservaService: ReservaService;
 
   locais: Local[];
+  reservas: Reserva[];
   constructor(protected injector: Injector) { }
 
   ngOnInit() {
-    this.localService = new LocalService(this.injector);
+    this.InitServices();
     this.populaLocais();
+    this.consultaReservas();
+  }
+
+  private InitServices() {
+    this.localService = new LocalService(this.injector);
+    this.reservaService = new ReservaService(this.injector);
+
   }
 
   private populaLocais() {
@@ -40,5 +51,39 @@ export class ReservaListPage implements OnInit {
           (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
         );
   }
+
+  private consultaReservas(){
+    this.reservas = [];
+    this.reservaService.getAll()
+    .subscribe(
+      (resource) => {
+        this.reservas = resource;
+      },
+      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+    );
+  }
+
+  private convertInHours(milliseconds: number, withHour: boolean):string {
+		let seconds = (milliseconds/1000)%60;
+		let minutes = (milliseconds/(1000*60))%60;
+		let hours   = (milliseconds/(1000*60*60))%24;
+		var out = "";
+
+		minutes = ( minutes + (60 * hours) );
+		let s_minutes = ( minutes < 10) ? "0" + minutes : minutes;
+		let s_seconds = ( seconds < 10) ? "0" + seconds : seconds;
+
+		out = minutes + ":" + seconds;
+
+		if(withHour) {
+			let s_hours = (hours < 10) ? "0" + hours : hours;
+			s_minutes = (minutes < 10) ? "0" + minutes : minutes;
+			s_seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+			out = s_hours + ":" + s_minutes + ":" + s_seconds;
+		} 
+
+		return out;
+	};
 
 }

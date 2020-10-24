@@ -1,10 +1,11 @@
 import { BaseResourceModel } from '../shared/model/base-resource-model';
 import { Unidade } from '../model/unidade'
 import { Time } from '@angular/common';
+import { Local } from './local';
 
 export class Reserva extends BaseResourceModel {
     unidadeReserva: Unidade;
-    localReserva: string;
+    localReserva: Local;
     dtReserva: Date;
     dtSolicitacao: Date;
     hrIniReserva: Time;

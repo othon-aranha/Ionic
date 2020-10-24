@@ -12,6 +12,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt, 'pt-BR');
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
