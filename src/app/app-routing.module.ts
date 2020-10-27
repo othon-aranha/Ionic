@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
-    path: 'produtos',
-    loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule)
-  },
-  {
     path: 'meus-pedidos',
     loadChildren: () => import('./pages/meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
   },
@@ -30,10 +26,6 @@ const routes: Routes = [
   {
     path: 'tab-categoria',
     loadChildren: () => import('./pages/tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
-  },
-  {
-    path: 'tribunal',
-    loadChildren: () => import('./pages/tribunal/tribunal.module').then( m => m.TribunalPageModule)
   },
   {
     path: 'menu-principal',

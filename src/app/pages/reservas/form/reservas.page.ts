@@ -4,13 +4,13 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { AlertService } from 'src/app/shared/providers/alert/alert.service';
 
-import { Reserva } from '../../model/reserva';
-import { ReservaService } from '../../service/reserva.service';
-import { BaseResourceFormComponent } from '../../shared/component/base-resource-form/base-resource-form.component';
-import { LocalService } from '../../service/local.service';
-import { Local } from '../../model/local';
-import { UnidadeService } from '../../service/unidade.service';
-import { Unidade } from '../../model/unidade';
+import { Reserva } from '../../../model/reserva';
+import { ReservaService } from '../../../service/reserva.service';
+import { BaseResourceFormComponent } from '../../../shared/component/base-resource-form/base-resource-form.component';
+import { LocalService } from '../../../service/local.service';
+import { Local } from '../../../model/local';
+import { UnidadeService } from '../../../service/unidade.service';
+import { Unidade } from '../../../model/unidade';
 
 
 @Component({

@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ReservasPageRoutingModule } from './reservas-routing.module';
+import { ReservasPageRoutingModule } from './../reservas-routing.module';
 
-import { ReservasPage } from './form/reservas.page';
-import { ReservaService } from '../../service/reserva.service';
-import { TabsPage } from './tabs/tabs.page';
+import { ReservasPage } from './reservas.page';
+import { ReservaService } from '../../../service/reserva.service';
+import { TabsPage } from './../tabs/tabs.page';
 
 @NgModule({
   imports: [
@@ -21,4 +21,4 @@ import { TabsPage } from './tabs/tabs.page';
   , declarations: [ReservasPage, TabsPage]
   , providers: [ReservaService]
 })
-export class ReservasPageModule {}
+export class ReservaFormPageModule {}
