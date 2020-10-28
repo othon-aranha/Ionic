@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { ReservasPageRoutingModule } from './reservas-routing.module';
 
-import { ReservasPage } from './form/reservas.page';
 import { ReservaService } from '../../service/reserva.service';
 import { TabsPage } from './tabs/tabs.page';
 
@@ -18,7 +17,7 @@ import { TabsPage } from './tabs/tabs.page';
     IonicModule,
     ReservasPageRoutingModule
   ]
-  , declarations: [ReservasPage, TabsPage]
+  , declarations: [TabsPage]
   , providers: [ReservaService]
 })
 export class ReservasPageModule {}

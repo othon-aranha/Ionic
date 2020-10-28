@@ -185,6 +185,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.msgs = [];
     this.msgs.push({ severity: 'success', summary: 'Solicitação processada com sucesso!'});
 
+    this.clearValuesForm();
+
     const baseComponentPath: string = this.route.snapshot.parent.url[0].path;
 
     // redirect/reload component page

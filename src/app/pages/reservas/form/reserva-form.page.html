@@ -11,14 +11,14 @@
     <ion-item>
       <ion-label>Unidade</ion-label>
       <ion-select formControlName="unidadeReserva">
-        <ion-select-option *ngFor="let unidade of unidades" [value]="unidade.id">{{ unidade.nrAp }}</ion-select-option>        
+        <ion-select-option *ngFor="let unidade of unidades" [value]="unidade">{{ unidade.nrAp }}</ion-select-option>        
       </ion-select>
     </ion-item>
 
     <ion-item>
       <ion-label>Local</ion-label>
       <ion-select formControlName="localReserva" >
-        <ion-select-option *ngFor="let local of locais" [value]="local.id">{{ local.dsLocal }}</ion-select-option>   
+        <ion-select-option *ngFor="let local of locais" [value]="local">{{ local.dsLocal }}</ion-select-option>   
       </ion-select>
     </ion-item>
     

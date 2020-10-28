@@ -9,10 +9,6 @@ const routes: Routes = [
     component: TabsPage
   },
   {
-    path: 'reservas',
-    component: TabsPage
-  },
-  {
     path: 'reserva-list',
     loadChildren: () => import('./form-list/reserva-list.module').then( m => m.ReservaListPageModule)
   },

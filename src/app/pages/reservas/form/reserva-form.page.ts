@@ -15,10 +15,10 @@ import { Unidade } from '../../../model/unidade';
 
 @Component({
   selector: 'app-reservas',
-  templateUrl: './reservas.page.html',
-  styleUrls: ['./reservas.page.scss'],
+  templateUrl: './reserva-form.page.html',
+  styleUrls: ['./reserva-form.page.scss'],
 })
-export class ReservasPage extends BaseResourceFormComponent<Reserva> implements OnInit {
+export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implements OnInit {
   ufs = [];
   editing = false;
   checked = false;
@@ -90,14 +90,30 @@ export class ReservasPage extends BaseResourceFormComponent<Reserva> implements 
       dtReserva: new FormControl(this.resource.dtReserva, [Validators.required] ),
       dtSolicitacao: new FormControl(this.resource.dtSolicitacao, [Validators.required] ),
       hrIniReserva: new FormControl(this.resource.hrIniReserva, [Validators.required] ),
-      hrFimReserva: new FormControl(this.resource.hrFimReserva, [Validators.required] )
+      hrFimReserva: new FormControl(this.resource.hrFimReserva, [Validators.required] ),
+      dtConfirmacao: new FormControl(this.resource.dtConfirmacao, [] ),
+      dtCancelamento: new FormControl(this.resource.dtCancelamento, [] )
     });
   }
 
   submitForm(): void {
     this.resourceForm.get("dtSolicitacao").setValue(new Date());
     super.submitForm();
+    // this.clearForm();
     //
+  }
+
+  clearForm(): void {
+    this.resourceForm.patchValue({
+      unidadeReserva: [null],
+      localReserva:   [null],
+      dtReserva:      [null],
+      dtSolicitacao:  [null],
+      hrIniReserva:   [null],
+      hrFimReserva:   [null],
+      dtConfirmacao:  [null],
+      dtCancelamento: [null]
+    });
   }
 
   onAfterloadResource() {
@@ -106,7 +122,7 @@ export class ReservasPage extends BaseResourceFormComponent<Reserva> implements 
 
 
   voltar(): void {
-    // this.location.back();
+    this.location.back();
   }
 
   retornar(): void {
