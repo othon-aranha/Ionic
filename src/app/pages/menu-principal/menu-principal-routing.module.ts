@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('../categoria/categoria-routing.module').then( m => m.CategoriaPageRoutingModule)
   },
   {
+    path: 'unidade',
+    loadChildren: () => import('../unidade/unidade-routing.module').then( m => m.UnidadePageRoutingModule)
+  },
+  {
     path: 'reservas',
     loadChildren: () => import('../reservas/reservas-routing.module').then( m => m.ReservasPageRoutingModule)
   }

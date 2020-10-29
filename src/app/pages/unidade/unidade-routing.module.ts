@@ -9,16 +9,12 @@ const routes: Routes = [
     component: TabsPage
   },
   {
-    path: 'reservas',
-    component: TabsPage
-  },  
-  {
-    path: 'reserva-list',
-    loadChildren: () => import('./form-list/reserva-list.module').then( m => m.ReservaListPageModule)
+    path: 'unidade-list',
+    loadChildren: () => import('./unidade-list/unidade-list.module').then( m => m.UnidadeListPageModule)
   },
   {
-    path: 'reserva-form',
-    loadChildren: () => import('./form/reserva-form.module').then( m => m.ReservaFormPageModule)
+    path: 'unidade-form',
+    loadChildren: () => import('./unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
   },
   {
     path: 'menu-principal',
@@ -30,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ReservasPageRoutingModule {}
+export class UnidadePageRoutingModule {}

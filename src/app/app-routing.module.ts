@@ -36,8 +36,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reservas/reservas.module').then( m => m.ReservasPageModule)
   },
   {
-    path: 'unidade-list',
-    loadChildren: () => import('./pages/unidade/unidade-list/unidade-list.module').then( m => m.UnidadeListPageModule)
+    path: 'unidade',
+    loadChildren: () => import('./pages/unidade/unidade.module').then( m => m.UnidadePageModule)
   }
 ];
 
