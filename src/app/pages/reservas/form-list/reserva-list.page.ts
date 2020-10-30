@@ -37,7 +37,6 @@ export class ReservaListPage implements OnInit {
   private InitServices() {
     this.localService = new LocalService(this.injector);
     this.reservaService = new ReservaService(this.injector);
-
   }
 
   private populaLocais() {

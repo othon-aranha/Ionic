@@ -42,8 +42,9 @@ export class UnidadeFormPage extends BaseResourceFormComponent<Unidade>  impleme
     });
   }
 
-  mudaLocacao(checked: boolean) {
-    this.blocado = checked;
+  mudaLocacao(event): void {
+    const isChecked = this.blocado;
+    console.log(isChecked);
   }
 
   voltar(): void {
