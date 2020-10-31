@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, IonToolbar } from '@ionic/angular';
 
 import { UnidadeFormPageRoutingModule } from './unidade-form-routing.module';
-
 import { UnidadeFormPage } from './unidade-form.page';
 
 @NgModule({

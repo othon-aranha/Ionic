@@ -32,7 +32,8 @@ export class MenuPrincipalPage implements OnInit {
    this.appMenuItems = [
         {title: 'Administração', color: 'secondary', /* component: null, */ icon: ''},
         {title: 'Unidade', color: 'secondary',  route: 'unidade', /* component: null, */ icon: 'star'},
-        {title: 'Reserva', color: 'secondary',  route: 'reservas', /* component: null, */ icon: 'star'}
+        {title: 'Reserva', color: 'secondary',  route: 'reservas', /* component: null, */ icon: 'star'},
+        {title: 'Sair', color: 'secondary',  route: '', /* component: null, */ icon: 'star'}
     ];
 
    this.accountMenuItems = [

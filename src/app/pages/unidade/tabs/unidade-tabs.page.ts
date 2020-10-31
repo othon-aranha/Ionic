@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: './tabs.page.html',
-  styleUrls: ['./tabs.page.scss'],
+  templateUrl: './unidade-tabs.page.html',
+  styleUrls: ['./unidade-tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class UnidadeTabsPage implements OnInit {
 
   constructor() { }
 

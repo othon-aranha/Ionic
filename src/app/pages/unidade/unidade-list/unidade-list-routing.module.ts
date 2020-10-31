@@ -10,8 +10,8 @@ const routes: Routes = [
     component: UnidadeListPage
   },
   {
-    path: 'edit/unidade/',
-    component: UnidadeFormPage
+    path: 'unidade-list',
+    component: UnidadeListPage
   }
 ];
 

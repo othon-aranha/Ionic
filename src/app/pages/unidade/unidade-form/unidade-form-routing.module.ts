@@ -9,7 +9,7 @@ const routes: Routes = [
     component: UnidadeFormPage
   },
   {
-    path: 'edit/unidade-form',
+    path: 'unidade-form/:id/edit',
     component: UnidadeFormPage
   }
 ];

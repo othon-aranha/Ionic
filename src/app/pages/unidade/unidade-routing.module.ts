@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TabsPage } from './tabs/tabs.page';
+import { UnidadeTabsPage } from './tabs/unidade-tabs.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage
+    component: UnidadeTabsPage
+  },
+  {
+    path: 'unidade',
+    component: UnidadeTabsPage
   },
   {
     path: 'unidade-list',
