@@ -4,6 +4,7 @@ import { Unidade } from '../../../model/unidade';
 import { UnidadeService } from '../../../service/unidade.service';
 import { AlertService } from '../../../shared/providers/alert/alert.service';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-unidade-form',
@@ -15,7 +16,7 @@ export class UnidadeFormPage extends BaseResourceFormComponent<Unidade>  impleme
   blocado: boolean;
 
   constructor(protected unidadeService: UnidadeService, protected injector: Injector, 
-    protected alertSrv: AlertService) {
+              protected alertSrv: AlertService) {
     super(injector, new Unidade(), unidadeService, Unidade.fromJson); 
   }
 

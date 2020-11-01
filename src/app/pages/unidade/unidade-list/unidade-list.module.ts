@@ -15,7 +15,6 @@ import { UnidadeFormPageModule } from '../unidade-form/unidade-form.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    UnidadeFormPageModule,
     UnidadeListPageRoutingModule
   ],
   declarations:[UnidadeListPage]

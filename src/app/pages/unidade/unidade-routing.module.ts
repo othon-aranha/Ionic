@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UnidadeTabsPage } from './tabs/unidade-tabs.page';
+import { UnidadeListPage } from './unidade-list/unidade-list.page';
+import { UnidadeFormPage } from './unidade-form/unidade-form.page';
 
 const routes: Routes = [
   {
@@ -10,15 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'unidade',
-    component: UnidadeTabsPage
-  },
-  {
-    path: 'unidade-list',
-    loadChildren: () => import('./unidade-list/unidade-list.module').then( m => m.UnidadeListPageModule)
-  },
-  {
-    path: 'unidade-form',
-    loadChildren: () => import('./unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+    component: UnidadeTabsPage,
+    children: [
+         {path: 'unidade-list', component: UnidadeListPage},
+         {path: 'unidade-form', component: UnidadeFormPage}
+      ]
   },
   {
     path: 'menu-principal',

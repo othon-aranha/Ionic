@@ -17,6 +17,7 @@ export class UnidadeListPage implements OnInit {
   constructor(protected injector: Injector) { }
 
   ngOnInit() {
+    
     this.InitServices();
     this.populaUnidades();
   }
