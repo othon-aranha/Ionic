@@ -45,7 +45,6 @@ export class UnidadeFormPage extends BaseResourceFormComponent<Unidade>  impleme
 
   mudaLocacao(event): void {
     const isChecked = this.blocado;
-    console.log(isChecked);
   }
 
   voltar(): void {

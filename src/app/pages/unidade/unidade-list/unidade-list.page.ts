@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { UnidadeService } from '../../../service/unidade.service';
 import { Unidade } from '../../../model/unidade';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-unidade-list',
@@ -12,9 +13,13 @@ export class UnidadeListPage implements OnInit {
   //Service
   unidadeService: UnidadeService;
 
+  protected location: Location;
+
   //
   unidades: Array<Unidade>;
-  constructor(protected injector: Injector) { }
+  constructor(protected injector: Injector) { 
+    this.location = this.injector.get(Location);
+  }
 
   ngOnInit() {
     
@@ -38,4 +43,8 @@ export class UnidadeListPage implements OnInit {
         );
   }
 
+
+  voltar(): void {
+    this.location.back();
+  }
 }

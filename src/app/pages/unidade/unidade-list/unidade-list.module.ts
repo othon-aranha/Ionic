@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { UnidadeListPageRoutingModule } from './unidade-list-routing.module';
 import { UnidadeListPage } from './unidade-list.page';
-import { UnidadeFormPageModule } from '../unidade-form/unidade-form.module';
 
 []
 @NgModule({

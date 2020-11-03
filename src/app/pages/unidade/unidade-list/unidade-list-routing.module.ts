@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'unidade-list',
     component: UnidadeListPage
+  },
+  {
+    path: 'unidade-form/:id/edit',
+    loadChildren: () => import('../unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
   }
 ];
 

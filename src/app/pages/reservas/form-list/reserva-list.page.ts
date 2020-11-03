@@ -3,6 +3,7 @@ import { LocalService } from 'src/app/service/local.service';
 import { Local } from '../../../model/local';
 import { ReservaService } from '../../../service/reserva.service';
 import { Reserva } from '../../../model/reserva';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-reserva-list',
@@ -24,9 +25,13 @@ export class ReservaListPage implements OnInit {
   localService: LocalService;
   reservaService: ReservaService;
 
+  protected location: Location;
+
   locais: Local[];
   reservas: Reserva[];
-  constructor(protected injector: Injector) { }
+  constructor(protected injector: Injector) {
+    this.location = this.injector.get(Location);
+   }
 
   ngOnInit() {
     this.InitServices();
@@ -83,6 +88,10 @@ export class ReservaListPage implements OnInit {
 		} 
 
 		return out;
-	};
+  };
+  
+  voltar(): void {
+    this.location.back();
+  }
 
 }

@@ -14,10 +14,6 @@ const routes: Routes =
     component: UnidadeTabsPage
   },
   {
-    path: 'unidade-list',
-    loadChildren: () => import('../unidade-list/unidade-list.module').then( m => m.UnidadeListPageModule)
-  },
-  {
     path: 'unidade-form',
     loadChildren: () => import('../unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
   },
