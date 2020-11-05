@@ -8,10 +8,10 @@
       <ion-list-header color="primary">
         Menu Principal
       </ion-list-header>
-      <ion-item *ngFor="let menuItem of appMenuItems" [color]="menuItem.color">
-        <button menuClose (click)="openPage(menuItem)"> 
+      <ion-item *ngFor="let menuItem of appMenuItems">
+        <ion-menu-button menuClose (click)="openPage(menuItem)"> 
         <ion-icon  item-left [name]="menuItem.icon"></ion-icon>       
-        </button>
+        </ion-menu-button>
         <ion-label>{{menuItem.title}}</ion-label>
     </ion-item>
     </ion-list>
