@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class LocalService extends BaseResourceService<Local> {
 
   constructor(protected injector: Injector) {
-    super('http://localhost:8082/local', injector, Local.fromJson);
+    super('http://192.168.0.25:8082/local', injector, Local.fromJson);
    }
 
    protected getAllSufix(): string {

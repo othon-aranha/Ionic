@@ -1,5 +1,3 @@
-import { Location } from '@angular/common';
-
 import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
 import { AlertService } from 'src/app/shared/providers/alert/alert.service';
@@ -33,6 +31,7 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
   public customDoneText="Ok";
   public anoMin: string;
   public anoMax: string;
+  public dtInicial: Date;
 
   //Services
   localService: LocalService;
@@ -54,7 +53,8 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
     this.populaLocais();
     this.populaUnidades();
     
-    this.anoMin = new Date().getFullYear().toString();
+    this.anoMin    = new Date().getFullYear().toString();
+    this.dtInicial = new Date();
     this.anoMax = this.anoMin;
     super.ngOnInit();
   }

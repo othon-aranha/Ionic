@@ -1,7 +1,6 @@
 import { BaseResourceModel } from '../shared/model/base-resource-model';
 
 export class Local extends BaseResourceModel {
-    id: number;
     dsLocal: string;
     locavel: boolean;
     vlrLocacao: number;

@@ -31,11 +31,13 @@ export class MenuPrincipalPage implements OnInit {
 
    this.appMenuItems = [
         {title: 'Administração', color: 'light', /* component: null, */ icon: 'options'},
+        {title: 'Local', color: 'light',  route: 'locais', /* component: null, */ icon: 'card'},
         {title: 'Unidade', color: 'light',  route: 'unidade', /* component: null, */ icon: 'people'},
         {title: 'Reserva', color: 'light',  route: 'reservas', /* component: null, */ icon: 'attach'},
         {title: 'Pedidos', color: 'light',  route: 'meus-pedidos', /* component: null, */ icon: 'cart'},
         {title: 'Sair', color: 'light',  route: '', /* component: null, */ icon: 'exit'}
     ];
+    
 
    this.accountMenuItems = [
         {title: 'My Account', /* component: null, */ icon: 'ios-contact'},
