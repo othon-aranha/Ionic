@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'menu-principal',
     loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },
+  {
+    path: 'local-list',
+    loadChildren: () => import('./form-list/local-list.module').then( m => m.LocalListPageModule)
   }
 ];
 
