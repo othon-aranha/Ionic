@@ -1,0 +1,15 @@
+ion-toolbar {
+  background: var(--ion-color-primary);
+}
+
+.testing {
+  color: var(--ion-color-primary);
+}
+
+ion-content ion-segment {
+  margin: 5px 0;
+}
+
+ion-label.ion-color.sc-ion-label-md-h {
+  color: red;
+}

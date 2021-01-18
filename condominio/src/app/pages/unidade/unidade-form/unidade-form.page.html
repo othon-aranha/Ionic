@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Unidade</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
+    <ion-item>
+      <ion-label>Apartamento</ion-label>
+      <ion-input type="number" formControlName="nrAp"></ion-input>
+    </ion-item> 
+
+    <ion-item>
+      <ion-label>Proprietário</ion-label>
+      <ion-input type="text" formControlName="nmProprietario"></ion-input>
+    </ion-item> 
+
+    <div *ngIf="!blocado; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ion-item>
+        <ion-label>Locado</ion-label>
+        <ion-toggle slot="start" formControlName="locado" [(ngModel)]="blocado" [checked]="blocado" (ionChange)="mudaLocacao($event)"></ion-toggle>
+      </ion-item>  
+    </ng-template>
+    <ng-template #elseBlock>
+      <ion-item>
+        <ion-label>Locado</ion-label>
+        <ion-toggle slot="start" formControlName="locado" [(ngModel)]="blocado" [checked]="blocado" (ionChange)="mudaLocacao($event)"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Locador</ion-label>
+          <ion-input type="text" formControlName="nmLocador"></ion-input>
+      </ion-item> 
+            
+    </ng-template>
+
+
+
+
+  </form>
+
+</ion-content>
+
+{{ resourceForm.value | json }}
+
+{{ blocado }}
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons start>
+      <ion-button  type="submit" fill="solid" color="success" (click)="submitForm()">
+        Salvar
+         <ion-icon slot="start" name="log-in"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="solid" color="secondary" (click)="voltar()">
+      Voltar
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>  
+  </ion-toolbar>
+</ion-footer>

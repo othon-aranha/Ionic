@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-icon name="menu"></ion-icon>
+  <ion-title class="ion-text-center">Meus Pedidos <ion-badge color="warning">{{checkedItems}}</ion-badge></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+ <!-- Checkboxes in a List -->
+ <ion-list>
+   <ion-item *ngFor="let entry of form">
+     <ion-label>{{entry.val}}</ion-label>
+     <ion-checkbox slot="end" [(ngModel)]="entry.isChecked" (ionChange)="contarItensMarcados()"></ion-checkbox>
+   </ion-item>
+</ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons end>
+      <ion-button fill="solid" color="secondary" (click)="retornar()">
+      Voltar
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>  
+  </ion-toolbar>
+</ion-footer>

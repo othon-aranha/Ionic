@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Local</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
+
+    <ion-item>
+      <ion-label>Local</ion-label>
+      <ion-input type="text" formControlName="dsLocal"></ion-input>
+    </ion-item>     
+
+    <ion-item>
+      <ion-label>Valor Locação</ion-label>
+      <ion-input type="number" formControlName="vlrLocacao"></ion-input>
+    </ion-item> 
+
+
+  </form>    
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-buttons start>
+      <ion-button  type="submit" fill="solid" color="success" (click)="submitForm()">
+        Salvar
+         <ion-icon slot="start" name="log-in"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="solid" color="secondary" (click)="voltar()">
+      Voltar
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>  
+  </ion-toolbar>
+</ion-footer>
