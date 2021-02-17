@@ -7,23 +7,22 @@
 <ion-content>
 
   <ion-header translucent>
-    <ion-toolbar>
-      <ion-title>Item</ion-title>
-    </ion-toolbar>
 
     <ion-item>
       <ion-label>Ano</ion-label>
-      <ion-datetime [pickerOptions]="customPickerOptions" 
+      <ion-datetime
+      [pickerOptions]="customPickerOptions" 
       placeholder="Informe o Ano-Mês" 
       displayFormat="YYYY-MM" 
       [min]=anoMin 
-      [value]=anoMin>
+      [value]=anoMin
+      (ionChange)="consultaReservas()">
       </ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Local Reservado</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" value="1">
+      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(value)]="vrLocal" (ionChange)="consultaReservas()">
         <ion-select-option *ngFor="let local of locais" [value]="local.id">{{ local.dsLocal }}</ion-select-option>
       </ion-select> 
     </ion-item>

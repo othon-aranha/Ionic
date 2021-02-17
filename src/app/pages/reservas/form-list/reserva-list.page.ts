@@ -18,8 +18,9 @@ export class ReservaListPage implements OnInit {
   public customMonthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez";
   public customCancelText="Cancelar";
   public customDoneText="Ok";
-  public anoMin: string;
-  public anoMax: string;
+  private anoMin: string;
+  private anoMax: string;
+  vrLocal: number;
 
   //Services
   localService: LocalService;
@@ -56,15 +57,17 @@ export class ReservaListPage implements OnInit {
         );
   }
 
-  private consultaReservas(){
+  private consultaReservas(){   
     this.reservas = [];
-    this.reservaService.getAll()
-    .subscribe(
-      (resource) => {
-        this.reservas = resource;
-      },
-      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
-    );
+    if ( ( this.anoMin != undefined ) && ( this.vrLocal != undefined ) ) {
+      this.reservaService.listaReservasporAnoMeseLocal(this.anoMin, this.vrLocal)
+      .subscribe(
+        (resource) => {
+          this.reservas = resource;
+        },
+        (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+      );
+    }
   }
 
   private convertInHours(milliseconds: number, withHour: boolean):string {

@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class ReservaService extends BaseResourceService<Reserva>  {
 
   constructor(protected injector: Injector) {
-    super('http://192.168.0.25:8082/reserva', injector, Reserva.fromJson);
+    super('http://192.168.0.13:8082/reserva', injector, Reserva.fromJson);
    }
 
    protected getAllSufix(): string {
@@ -19,6 +19,14 @@ export class ReservaService extends BaseResourceService<Reserva>  {
 
    listaLocais(): Observable<Array<Reserva>> {
     return this.http.get<Reserva[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
+    .pipe(
+      map(this.jsonDataToResources.bind(this)),
+      catchError(this.handleError)
+    );
+  }
+
+  listaReservasporAnoMeseLocal(anoMes: string, local: number): Observable<Array<Reserva>> {
+    return this.http.get<Reserva[]>(this.apiPath + '/anoMes/' + anoMes + '/local/' + local, {headers: this.headers})
     .pipe(
       map(this.jsonDataToResources.bind(this)),
       catchError(this.handleError)
