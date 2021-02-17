@@ -25,7 +25,7 @@ export class ReservaService extends BaseResourceService<Reserva>  {
     );
   }
 
-  listaReservasporAnoMeseLocal(anoMes: string, local: number): Observable<Array<Reserva>> {
+  listaReservasporAnoMeseLocal(anoMes: string, local: string): Observable<Array<Reserva>> {
     return this.http.get<Reserva[]>(this.apiPath + '/anoMes/' + anoMes + '/local/' + local, {headers: this.headers})
     .pipe(
       map(this.jsonDataToResources.bind(this)),

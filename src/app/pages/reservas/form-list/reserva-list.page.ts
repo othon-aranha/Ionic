@@ -20,7 +20,7 @@ export class ReservaListPage implements OnInit {
   public customDoneText="Ok";
   private anoMin: string;
   private anoMax: string;
-  vrLocal: number;
+  vrLocal: string[];
 
   //Services
   localService: LocalService;
@@ -59,8 +59,10 @@ export class ReservaListPage implements OnInit {
 
   private consultaReservas(){   
     this.reservas = [];
+    let anoMes: string;
     if ( ( this.anoMin != undefined ) && ( this.vrLocal != undefined ) ) {
-      this.reservaService.listaReservasporAnoMeseLocal(this.anoMin, this.vrLocal)
+      anoMes = this.anoMin.substr(0,7);
+      this.reservaService.listaReservasporAnoMeseLocal(anoMes, this.vrLocal.toString())
       .subscribe(
         (resource) => {
           this.reservas = resource;
