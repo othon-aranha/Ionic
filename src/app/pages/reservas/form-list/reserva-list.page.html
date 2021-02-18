@@ -38,7 +38,14 @@
 
       <ng-template ngFor let-reserva [ngForOf]="reservas"  let-i="index" even as isEven>
         <ion-item-group>
+
           <ion-item-divider>  
+
+            <ion-chip outline color="secondary" (click)="Confirmareserva(reserva)">
+              <ion-icon name="bag-outline"></ion-icon>
+              <ion-label>Em Aberto</ion-label>            
+            </ion-chip>
+
             <ion-label>{{reserva.localReserva.dsLocal}} - {{ reserva.dtReserva | date:'dd/MM/yyyy' }}</ion-label>
             <ion-badge  slot="start" color="secondary">{{i+1}}</ion-badge>
           </ion-item-divider>

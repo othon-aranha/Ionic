@@ -92,12 +92,13 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
       hrIniReserva: new FormControl(this.resource.hrIniReserva, [Validators.required] ),
       hrFimReserva: new FormControl(this.resource.hrFimReserva, [Validators.required] ),
       dtConfirmacao: new FormControl(this.resource.dtConfirmacao, [] ),
-      dtCancelamento: new FormControl(this.resource.dtCancelamento, [] )
+      statusReserva: new FormControl(this.resource.statusReserva, [] )
     });
   }
 
   submitForm(): void {
     this.resourceForm.get("dtSolicitacao").setValue(new Date());
+    this.resourceForm.get("statusReserva").setValue(0);
     super.submitForm();
     // this.clearForm();
     //

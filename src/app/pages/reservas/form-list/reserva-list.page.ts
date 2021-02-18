@@ -4,6 +4,7 @@ import { Local } from '../../../model/local';
 import { ReservaService } from '../../../service/reserva.service';
 import { Reserva } from '../../../model/reserva';
 import { Location } from '@angular/common';
+import { AlertService } from 'src/app/shared/providers/alert/alert.service';
 
 @Component({
   selector: 'app-reserva-list',
@@ -20,18 +21,20 @@ export class ReservaListPage implements OnInit {
   public customDoneText="Ok";
   private anoMin: string;
   private anoMax: string;
-  vrLocal: string[];
+  vrLocal: string[];  
 
   //Services
   localService: LocalService;
   reservaService: ReservaService;
 
   protected location: Location;
+  protected alertSrv: AlertService;
 
   locais: Local[];
   reservas: Reserva[];
   constructor(protected injector: Injector) {
     this.location = this.injector.get(Location);
+    this.alertSrv = this.injector.get(AlertService);
    }
 
   ngOnInit() {
@@ -43,6 +46,14 @@ export class ReservaListPage implements OnInit {
   private InitServices() {
     this.localService = new LocalService(this.injector);
     this.reservaService = new ReservaService(this.injector);
+  }
+
+  private Confirmareserva(reserva: Reserva) {
+    this.alertSrv.Confirm('Confirmação', 'Confirma a reserva ?', () => {
+      reserva.statusReserva = 1;
+      reserva.dtConfirmacao = new Date().toTimeString();   
+      this.reservaService.update(reserva);
+    });
   }
 
   private populaLocais() {

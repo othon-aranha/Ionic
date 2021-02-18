@@ -11,7 +11,7 @@ export class Reserva extends BaseResourceModel {
     hrIniReserva: string;
     hrFimReserva: string;
     dtConfirmacao: string;
-    dtCancelamento: string;
+    statusReserva: number;
     links: string;
 
     static fromJson(jsonData: any): Reserva {
