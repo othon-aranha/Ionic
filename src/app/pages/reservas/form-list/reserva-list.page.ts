@@ -38,6 +38,9 @@ export class ReservaListPage implements OnInit {
    }
 
   ngOnInit() {
+    let agora = new Date();
+    this.anoMin = agora.getFullYear().toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
+    this.anoMax = (agora.getFullYear()+1).toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
     this.InitServices();
     this.populaLocais();
     this.consultaReservas();
@@ -48,11 +51,17 @@ export class ReservaListPage implements OnInit {
     this.reservaService = new ReservaService(this.injector);
   }
 
-  private Confirmareserva(reserva: Reserva) {
+  private confirmarReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma a reserva ?', () => {
       reserva.statusReserva = 1;
       reserva.dtConfirmacao = new Date().toTimeString();   
       this.reservaService.update(reserva);
+    });
+  }
+
+  private excluirReserva(reserva: Reserva) {
+    this.alertSrv.Confirm('Confirmação', 'Confirma exclusão da reserva ?', () => {
+      this.reservaService.delete(reserva.id);
     });
   }
 
