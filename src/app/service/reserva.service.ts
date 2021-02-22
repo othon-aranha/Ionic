@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class ReservaService extends BaseResourceService<Reserva>  {
 
   constructor(protected injector: Injector) {
-    super('http://192.168.0.13:8082/reserva', injector, Reserva.fromJson);
+    super('http://localhost:8082/reserva', injector, Reserva.fromJson);
    }
 
    protected getAllSufix(): string {
