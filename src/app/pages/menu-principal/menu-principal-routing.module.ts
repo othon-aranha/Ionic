@@ -13,10 +13,6 @@ const routes: Routes = [
     component: MenuPrincipalPage
   },
   {
-    path: 'meus-pedidos',
-    loadChildren: () => import('../meus-pedidos/meus-pedidos-routing.module').then( m => m.MeusPedidosPageRoutingModule)
-  },
-  {
     path: 'tabs',
     loadChildren: () => import('../categoria/categoria-routing.module').then( m => m.CategoriaPageRoutingModule)
   },

@@ -34,7 +34,6 @@ export class MenuPrincipalPage implements OnInit {
         {title: 'Local', color: 'light',  route: 'locais', /* component: null, */ icon: 'card'},
         {title: 'Unidade', color: 'light',  route: 'unidade', /* component: null, */ icon: 'people'},
         {title: 'Reserva', color: 'light',  route: 'reservas', /* component: null, */ icon: 'attach'},
-        {title: 'Pedidos', color: 'light',  route: 'meus-pedidos', /* component: null, */ icon: 'cart'},
         {title: 'Sair', color: 'light',  route: '', /* component: null, */ icon: 'exit'}
     ];
     

@@ -21,10 +21,6 @@ const routes: Routes = [
     loadChildren: () => import('../pages/categoria/categoria-list/categoria-list.module').then( m => m.CategoriaListPageModule)
   },
   {
-    path: 'meus-pedidos',
-    loadChildren: () => import('../pages/meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
-  },
-  {
     path: 'minha-conta',
     loadChildren: () => import('../pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
   },

@@ -7,7 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: LocalFormPage
-  }
+  },
+  {
+    path: 'local-form/:id/edit',
+    pathMatch: 'full',
+    component: LocalFormPage
+  }  
 ];
 
 @NgModule({

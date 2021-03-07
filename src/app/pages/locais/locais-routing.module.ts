@@ -16,7 +16,11 @@ const routes: Routes = [
   {
     path: 'local-form',
     loadChildren: () => import('./form/local-form.module').then( m => m.LocalFormPageModule)
-  },  
+  },
+  {
+    path: 'local-form/:id/edit',
+    loadChildren: () => import('./form/local-form.module').then( m => m.LocalFormPageModule)
+  }, 
   {
     path: 'menu-principal',
     loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)

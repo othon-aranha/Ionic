@@ -16,10 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
-    path: 'meus-pedidos',
-    loadChildren: () => import('./pages/meus-pedidos/meus-pedidos.module').then( m => m.MeusPedidosPageModule)
-  },
-  {
     path: 'minha-conta',
     loadChildren: () => import('./pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
   },
@@ -38,7 +34,8 @@ const routes: Routes = [
   {
     path: 'unidade',
     loadChildren: () => import('./pages/unidade/unidade.module').then( m => m.UnidadePageModule)
-  },  {
+  },
+  {
     path: 'locais',
     loadChildren: () => import('./pages/locais/locais.module').then( m => m.LocaisPageModule)
   }
