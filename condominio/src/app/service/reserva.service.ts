@@ -17,20 +17,4 @@ export class ReservaService extends BaseResourceService<Reserva>  {
      return '/reservas';
    }
 
-   listaLocais(): Observable<Array<Reserva>> {
-    return this.http.get<Reserva[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
-    .pipe(
-      map(this.jsonDataToResources.bind(this)),
-      catchError(this.handleError)
-    );
-  }
-
-  recuperarLocal(id: string): Observable<Reserva> {
-    return this.http.get<Reserva>(this.apiPath + '/' + id, {headers: this.headers})
-    .pipe(
-      map(this.jsonDataToResources.bind(this)),
-      catchError(this.handleError)
-    );
-  }
-
 }
