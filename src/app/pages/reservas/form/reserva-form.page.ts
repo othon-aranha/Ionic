@@ -97,9 +97,32 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
   }
 
   submitForm(): void {
+    let reserva: Reserva[];
+    let data: string;
+    let local: Local;
+    data = this.resourceForm.get("dtReserva").value;
+    local = this.resourceForm.get("localReserva").value;
     this.resourceForm.get("dtSolicitacao").setValue(new Date());
     this.resourceForm.get("statusReserva").setValue(0);
-    super.submitForm();
+    this.reservaService.recuperaReservaporData(data, local.id)
+    .subscribe(
+      (resource) => {
+        reserva = resource;
+        if ( reserva != undefined )
+        {
+        if ( reserva.length > 0 ) {
+          this.alertSrv.Alert('Aviso','Já há uma reserva para essa Data');
+        }
+        else {
+          super.submitForm();
+        }}
+        else {
+          super.submitForm();  
+        }        
+      },
+      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+    );
+
     // this.clearForm();
     //
   }

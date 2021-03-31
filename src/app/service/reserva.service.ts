@@ -33,6 +33,14 @@ export class ReservaService extends BaseResourceService<Reserva>  {
     );
   }
 
+  recuperaReservaporData(dataReserva: string, local: string): Observable<Array<Reserva>> {
+    return this.http.get<Reserva[]>(this.apiPath + '/dataReserva/' + dataReserva + '/local/' + local, {headers: this.headers})
+    .pipe(
+      map(this.jsonDataToResources.bind(this)),
+      catchError(this.handleError)
+    );
+  }  
+
   recuperarLocal(id: string): Observable<Reserva> {
     return this.http.get<Reserva>(this.apiPath + '/' + id, {headers: this.headers})
     .pipe(

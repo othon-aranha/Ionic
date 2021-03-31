@@ -68,13 +68,13 @@ export class ReservaListPage implements OnInit {
   private populaLocais() {
     // Carregando os dominios do acesso
     this.locais = [];
-        this.localService.getAll()
-        .subscribe(
-          (resource) => {
-            this.locais = resource;
-          },
-          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
-        );
+    this.localService.getAll()
+    .subscribe(
+      (resource) => {
+        this.locais = resource;
+      },
+      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+    );
   }
 
   private consultaReservas(){   

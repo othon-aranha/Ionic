@@ -16,7 +16,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   protected http: HttpClient;
 
   protected headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-
+  
   constructor(
     protected apiPath: string,
     protected injector: Injector,
@@ -81,7 +81,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
 
     const url = `${this.apiPath}/${resource.id}`;
 
-    return this.http.put(url, resource).pipe(
+    return this.http.put(url, resource,  {headers: this.headers}).pipe(
       map(() => resource),
       catchError(this.handleError)
     );
