@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class UnidadeService extends BaseResourceService<Unidade> {
 
     constructor(protected injector: Injector) {
-      super('http://192.168.0.25:8082/unidade', injector, Unidade.fromJson);
+      super('http://localhost:8082/unidade', injector, Unidade.fromJson);
      }
   
      protected getAllSufix(): string {
