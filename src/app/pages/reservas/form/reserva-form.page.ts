@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { Validators, FormControl } from '@angular/forms';
-import { AlertService } from 'src/app/shared/providers/alert/alert.service';
+import { AlertService } from '../../../shared/providers/alert/alert.service';
 
 import { Reserva } from '../../../model/reserva';
 import { ReservaService } from '../../../service/reserva.service';
@@ -97,34 +97,14 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
   }
 
   submitForm(): void {
-    let reserva: Reserva[];
-    let data: string;
-    let local: Local;
-    data = this.resourceForm.get("dtReserva").value;
-    local = this.resourceForm.get("localReserva").value;
-    this.resourceForm.get("dtSolicitacao").setValue(new Date());
-    this.resourceForm.get("statusReserva").setValue(0);
-    this.reservaService.recuperaReservaporData(data, local.id)
-    .subscribe(
-      (resource) => {
-        reserva = resource;
-        if ( reserva != undefined )
-        {
-        if ( reserva.length > 0 ) {
-          this.alertSrv.Alert('Aviso','Já há uma reserva para essa Data');
-        }
-        else {
-          super.submitForm();
-        }}
-        else {
-          super.submitForm();  
-        }        
-      },
-      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
-    );
-
-    // this.clearForm();
-    //
+      this.resourceForm.get("dtSolicitacao").setValue(this.dtInicial);
+      this.resourceForm.get("statusReserva").setValue(0);
+      super.submitForm();
+      if ( this.serverErrorMessages.length === 0 ) {
+        this.clearForm();  
+      } 
+      
+  
   }
 
   clearForm(): void {

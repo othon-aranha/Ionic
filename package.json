@@ -30,7 +30,7 @@
     "cordova-sqlite-storage": "^5.0.1",
     "core-js": "^2.5.4",
     "ionicons": "^5.5.0",
-    "rxjs": "^6.5.5",
+    "rxjs": "^6.6.7",
     "sqlite3": "^5.0.0",
     "tslib": "^1.13.0",
     "zone.js": "~0.9.1"
@@ -62,5 +62,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project"
+  "description": "Project de Automação de Condomínios"
 }

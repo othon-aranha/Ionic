@@ -12,6 +12,8 @@ import { BaseService } from './base-service.service';
   providedIn: 'root'
 })
 export abstract class BaseResourceService<T extends BaseResourceModel>  {
+  protected host ='192.168.68.105';
+  protected port = '8082';
 
   protected http: HttpClient;
 
@@ -28,19 +30,17 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   protected abstract getAllSufix(): string;
 
   getAll(): Observable<T[]> {
-    return this.http.get<T[]>(this.apiPath + this.getAllSufix(), {headers: this.headers}).pipe(
-      map(this.jsonDataToResources.bind(this)),
-      catchError(this.handleError)
-    );
+    return this.http.get<T[]>(this.apiPath + this.getAllSufix(), {headers: this.headers})
+    .pipe(catchError(this.handleError), );
   }
 
   getById(id: any): Observable<T> {
     const url = `${this.apiPath}/${id}`;
 
-    return this.http.get(url, {headers: this.headers}).pipe(
-      map(this.jsonDataToResource.bind(this)),
-      catchError(this.handleError)
-    );
+    return this.http.get(url, {headers: this.headers})
+    .pipe(
+      this.handleError
+    );  
   }
 
   /*
@@ -55,11 +55,12 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   */
 
   create(resource: T): Observable<T> {
-    return this.http.post(this.apiPath, resource).pipe(
-      map(this.jsonDataToResource.bind(this)),
-      catchError(this.handleError)
+    return this.http.post(this.apiPath, resource)
+    .pipe(
+      map(() => resource),
+      catchError(this.handleError)  
     );
-  }
+   }
 
   private getKeys(resource: any): any {
     let AKey = [];

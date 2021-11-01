@@ -13,17 +13,15 @@
       <ion-datetime
       [pickerOptions]="customPickerOptions" 
       placeholder="Informe o Ano-Mês" 
-      displayFormat="YYYY-MM" 
-      [min]=anoMin 
+      displayFormat="YYYY-MM"  
       [max]=anoMax
-      [(ngModel)]=anoMin
       (ionChange)="consultaReservas()">
       </ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Local Reservado</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="vrLocal" (ionChange)="consultaReservas()">
+      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="vrLocal" (Change)="consultaReservas()">
         <ion-select-option *ngFor="let local of locais" [value]="local.id">{{ local.dsLocal }}</ion-select-option>
       </ion-select> 
     </ion-item>

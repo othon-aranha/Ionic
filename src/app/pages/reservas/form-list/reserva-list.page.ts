@@ -1,10 +1,10 @@
 import { Component, OnInit, Injector } from '@angular/core';
-import { LocalService } from 'src/app/service/local.service';
+import { LocalService } from '../../../service/local.service';
 import { Local } from '../../../model/local';
 import { ReservaService } from '../../../service/reserva.service';
 import { Reserva } from '../../../model/reserva';
 import { Location } from '@angular/common';
-import { AlertService } from 'src/app/shared/providers/alert/alert.service';
+import { AlertService } from '../../../shared/providers/alert/alert.service';
 
 @Component({
   selector: 'app-reserva-list',
@@ -80,18 +80,30 @@ export class ReservaListPage implements OnInit {
   private consultaReservas(){   
     this.reservas = [];
     let anoMes: string;
-    if ( ( this.anoMin != undefined ) && ( this.vrLocal != undefined ) ) {
+    if ( ( this.anoMin != undefined ) ) {
       anoMes = this.anoMin.substr(0,7);
-      this.reservaService.listaReservasporAnoMeseLocal(anoMes, this.vrLocal.toString())
-      .subscribe(
-        (resource) => {
-          this.reservas = resource;
-        },
-        (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
-      );
+      if ( this.vrLocal != undefined ) {
+        this.reservaService.listaReservasporAnoMeseLocal(anoMes, this.vrLocal.toString())
+        .subscribe(
+          (resource) => {
+            this.reservas = resource;
+          },
+          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+        );
+      } else {
+        this.reservaService.listaReservasporAnoMes(anoMes)
+        .subscribe(
+          (resource) => {
+            this.reservas = resource;
+          },
+          (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+        );        
+      }
+
     }
   }
 
+  /*
   private convertInHours(milliseconds: number, withHour: boolean):string {
 		let seconds = (milliseconds/1000)%60;
 		let minutes = (milliseconds/(1000*60))%60;
@@ -114,7 +126,8 @@ export class ReservaListPage implements OnInit {
 
 		return out;
   };
-  
+  */
+
   voltar(): void {
     this.location.back();
   }

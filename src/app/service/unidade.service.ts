@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class UnidadeService extends BaseResourceService<Unidade> {
 
     constructor(protected injector: Injector) {
-      super('http://192.168.0.13:8082/unidade', injector, Unidade.fromJson);
+      super('http://192.168.68.109:8082/unidade', injector, Unidade.fromJson);
      }
   
      protected getAllSufix(): string {
@@ -19,16 +19,14 @@ export class UnidadeService extends BaseResourceService<Unidade> {
   
     listaUnidades(): Observable<Array<Unidade>> {
       return this.http.get<Unidade[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
-      .pipe(
-        map(this.jsonDataToResources.bind(this)),
+      .pipe(this.jsonDataToResources.bind(this),
         catchError(this.handleError)
       );
     }
   
     recuperarUnidade(id: string): Observable<Unidade> {
       return this.http.get<Unidade>(this.apiPath + '/' + id, {headers: this.headers})
-      .pipe(
-        map(this.jsonDataToResources.bind(this)),
+      .pipe(this.jsonDataToResources.bind(this),
         catchError(this.handleError)
       );
     }
