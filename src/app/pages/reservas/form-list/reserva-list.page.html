@@ -6,6 +6,8 @@
 
 <ion-content>
 
+  <!--form [formGroup]="resourceForm" -->
+
   <ion-header translucent>
 
     <ion-item>
@@ -14,14 +16,16 @@
       [pickerOptions]="customPickerOptions" 
       placeholder="Informe o Ano-Mês" 
       displayFormat="YYYY-MM"  
-      [max]=anoMax
+      [max]=anoMax      
+      [(ngModel)]="DataSel"
+      (ionBlur)="consultaReservas()" 
       (ionChange)="consultaReservas()">
       </ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Local Reservado</ion-label>
-      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="vrLocal" (Change)="consultaReservas()">
+      <ion-select multiple="true" cancelText="Cancelar" okText="Ok" [(ngModel)]="vrLocal" (ionBlur)="consultaReservas()" (ionChange)="consultaReservas()">
         <ion-select-option *ngFor="let local of locais" [value]="local.id">{{ local.dsLocal }}</ion-select-option>
       </ion-select> 
     </ion-item>
@@ -36,15 +40,23 @@
         <ion-item-group>
 
           <ion-item-divider>  
-            <ion-chip outline color="danger" (click)="excluirReserva(reserva)">
-              <ion-icon name="trash-outline"></ion-icon>           
-            </ion-chip>
-
-            <ion-chip outline color="success" (click)="confirmarReserva(reserva)">
-              <ion-icon name="bag-outline"></ion-icon>          
-            </ion-chip>
-
-            <ion-label>{{reserva.localReserva.dsLocal}} - {{ reserva.dtReserva | date:'dd/MM/yyyy' }}</ion-label>
+            <div *ngIf="reserva.statusReserva == 0; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <ion-chip outline color="danger" (click)="excluirReserva(reserva)">
+                <ion-icon name="trash-outline"></ion-icon>           
+              </ion-chip>  
+              <ion-chip outline color="warning" (click)="confirmarReserva(reserva)">
+                <ion-label>{{reserva.localReserva.dsLocal}} - {{ reserva.dtReserva | date:'dd/MM/yyyy' }}</ion-label>
+                <ion-icon name="bag-outline"></ion-icon>          
+              </ion-chip>  
+            </ng-template>
+            <ng-template #elseBlock>
+              <ion-chip outline color="success">
+                <ion-label>{{reserva.localReserva.dsLocal}} - {{ reserva.dtReserva | date:'dd/MM/yyyy' }}</ion-label>                
+                <ion-icon name="bag-check"></ion-icon>          
+              </ion-chip>                
+            </ng-template>
+            
             <ion-badge  slot="start" color="secondary">{{i+1}}</ion-badge>
           </ion-item-divider>
 
@@ -62,6 +74,7 @@
 
   </ion-content>
 
+<!--/form -->
 
 </ion-content>
 

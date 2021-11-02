@@ -21,7 +21,11 @@ export class ReservaListPage implements OnInit {
   public customDoneText="Ok";
   private anoMin: string;
   private anoMax: string;
+  private DataSel: string;
   vrLocal: string[];  
+
+  serverErrorMessages: string[] = null;
+  msgs = [];  
 
   //Services
   localService: LocalService;
@@ -39,6 +43,7 @@ export class ReservaListPage implements OnInit {
 
   ngOnInit() {
     let agora = new Date();
+    this.DataSel = "";
     this.anoMin = agora.getFullYear().toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
     this.anoMax = (agora.getFullYear()+1).toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
     this.InitServices();
@@ -55,13 +60,26 @@ export class ReservaListPage implements OnInit {
     this.alertSrv.Confirm('Confirmação', 'Confirma a reserva ?', () => {
       reserva.statusReserva = 1;
       reserva.dtConfirmacao = new Date().toTimeString();   
-      this.reservaService.update(reserva);
+      this.reservaService.update(reserva)
+      .subscribe(
+        resource => reserva,
+        error => this.actionsForError(error)
+      ).add(
+        this.consultaReservas() 
+      );
+
+      
     });
   }
 
   private excluirReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma exclusão da reserva ?', () => {
-      this.reservaService.delete(reserva.id);
+      this.reservaService.delete(reserva.id)
+      .subscribe(        
+        error => this.actionsForError(error)
+      ).add(
+        this.consultaReservas() 
+      )
     });
   }
 
@@ -81,8 +99,8 @@ export class ReservaListPage implements OnInit {
     this.reservas = [];
     let anoMes: string;
     if ( ( this.anoMin != undefined ) ) {
-      anoMes = this.anoMin.substr(0,7);
-      if ( this.vrLocal != undefined ) {
+      anoMes = this.DataSel.toString().substr(0,7);  
+      if ( this.vrLocal != undefined ) {        
         this.reservaService.listaReservasporAnoMeseLocal(anoMes, this.vrLocal.toString())
         .subscribe(
           (resource) => {
@@ -102,6 +120,19 @@ export class ReservaListPage implements OnInit {
 
     }
   }
+
+  protected actionsForError(error) {
+    this.alertSrv.toast('Ocorreu um erro ao processar a sua solicitação!', 'top');
+    this.msgs = [];
+    this.msgs.push({ severity: 'error', summary: 'Ocorreu um erro ao processar a sua solicitação!'});
+
+    if (error.status === 422) {
+      this.serverErrorMessages = JSON.parse(error._body).errors;
+    } else {
+      this.serverErrorMessages = ['Falha na comunicação com o servidor. Por favor, tente mais tarde.'];
+    }
+  }
+
 
   /*
   private convertInHours(milliseconds: number, withHour: boolean):string {
