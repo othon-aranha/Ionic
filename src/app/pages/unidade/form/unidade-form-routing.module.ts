@@ -9,7 +9,12 @@ const routes: Routes = [
     component: UnidadeFormPage
   },
   {
-    path: 'unidade-form/:id/edit',
+    path: 'unidade/unidade-form/edit/:id',    
+    pathMatch: 'full',
+    component: UnidadeFormPage
+  }, 
+  {
+    path: 'unidade/edit/:id',
     component: UnidadeFormPage
   }
 ];

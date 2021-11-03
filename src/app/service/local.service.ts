@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class LocalService extends BaseResourceService<Local> {
   
   constructor(protected injector: Injector) {
-    super('http://192.168.68.109:8082/local', injector, Local.fromJson);
+    super('http://localhost:8082/local', injector, Local.fromJson);
    }
 
    protected getAllSufix(): string {
@@ -18,12 +18,10 @@ export class LocalService extends BaseResourceService<Local> {
   }
 
   listaLocais(): Observable<Array<Local>> {
-    return this.http.get<Local[]>(this.apiPath + this.getAllSufix() , {headers: this.headers})
-    .pipe(catchError(this.handleError));
+    return super.getAll();
   }
 
   recuperarLocal(id: string): Observable<Local> {
-    return this.http.get<Local>(this.apiPath + '/' + id, {headers: this.headers})
-    .pipe(catchError(this.handleError));
+    return super.getById(id);
   }
 }

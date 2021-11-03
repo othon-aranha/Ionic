@@ -75,6 +75,7 @@ export class ReservaListPage implements OnInit {
   private excluirReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma exclusão da reserva ?', () => {
       this.reservaService.delete(reserva.id)
+      .pipe()
       .subscribe(        
         error => this.actionsForError(error)
       ).add(

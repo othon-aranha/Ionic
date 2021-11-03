@@ -1,9 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Local } from 'src/app/model/local';
-import { LocalService } from 'src/app/service/local.service';
-import { BaseResourceFormComponent } from 'src/app/shared/component/base-resource-form/base-resource-form.component';
-import { AlertService } from 'src/app/shared/providers/alert/alert.service';
+import { Local } from '../../../model/local';
+import { LocalService } from '../../../service/local.service';
+import { BaseResourceFormComponent } from '../../../shared/component/base-resource-form/base-resource-form.component';
+import { AlertService } from '../../../shared/providers/alert/alert.service';
 
 @Component({
   selector: 'app-local',
@@ -18,7 +18,14 @@ export class LocalFormPage extends BaseResourceFormComponent<Local> implements O
   }
 
   ngOnInit() {
-    super.ngOnInit();
+    this.getParamId();
+    if ( this.id != undefined ) {
+      this.currentAction = 'edit';
+      this.buildResourceForm();
+      this.loadResource();
+    } else {
+      super.ngOnInit();
+    }
   }
 
   submitForm(): void {
@@ -26,7 +33,7 @@ export class LocalFormPage extends BaseResourceFormComponent<Local> implements O
   }
 
   protected onAfterloadResource(): void {
-    //
+    
   }
 
   protected buildResourceForm(): void {

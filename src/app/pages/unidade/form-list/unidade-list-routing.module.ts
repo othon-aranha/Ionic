@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UnidadeListPage } from './unidade-list.page';
-import { UnidadeFormPage } from '../unidade-form/unidade-form.page';
+import { UnidadeFormPage } from '../form/unidade-form.page';
 
 const routes: Routes = [
   {
@@ -10,12 +10,8 @@ const routes: Routes = [
     component: UnidadeListPage
   },
   {
-    path: 'unidade-list',
-    component: UnidadeListPage
-  },
-  {
-    path: 'unidade-form/:id/edit',
-    loadChildren: () => import('../unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+    path: 'edit/:id',
+    loadChildren: () => import('../form/unidade-form.module').then( m => m.UnidadeFormPageModule)
   }
 ];
 

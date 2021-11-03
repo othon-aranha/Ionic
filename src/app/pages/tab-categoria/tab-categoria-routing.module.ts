@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'menu-principal',
     loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
-  } 
+  } ,
+  {
+    path: 'reservas',
+    loadChildren: () => import('../menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  }  
 ];
 
 @NgModule({

@@ -11,13 +11,14 @@
     <ion-item-group>
         <ion-item color="secondary">
           <ion-label color="secondary">
-            <a [routerLink]="['/local-form/', local.id , 'edit']">{{local.dsLocal}}</a>
+            <a [routerLink]="['edit/', local.id]">{{local.dsLocal}}</a>
           </ion-label>
         </ion-item>   
         <ion-item-divider></ion-item-divider>
         
     </ion-item-group>
   </ng-template>
+  <router-outlet></router-outlet>
 
 </ion-list>
 

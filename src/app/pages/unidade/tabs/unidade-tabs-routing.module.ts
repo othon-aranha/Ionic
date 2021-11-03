@@ -15,7 +15,11 @@ const routes: Routes =
   },
   {
     path: 'unidade-form',
-    loadChildren: () => import('../unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+    loadChildren: () => import('../form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+  },
+  {
+    path: 'unidade-list',
+    loadChildren: () => import('../form-list/unidade-list.module').then( m => m.UnidadeListPageModule)
   },
   {
     path: 'menu-principal',

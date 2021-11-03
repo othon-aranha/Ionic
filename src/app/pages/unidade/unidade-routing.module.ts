@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UnidadeTabsPage } from './tabs/unidade-tabs.page';
-import { UnidadeListPage } from './unidade-list/unidade-list.page';
-import { UnidadeFormPage } from './unidade-form/unidade-form.page';
-import { UnidadeFormPageModule } from './unidade-form/unidade-form.module';
+import { UnidadeListPage } from './form-list/unidade-list.page';
+import { UnidadeFormPage } from './form/unidade-form.page';
+import { UnidadeFormPageModule } from './form/unidade-form.module';
 
 const routes: Routes = [
   {
@@ -13,19 +13,21 @@ const routes: Routes = [
   },
   {
     path: 'unidade',
-    component: UnidadeTabsPage,
-    children: [
-         {path: 'unidade-list', loadChildren: () => import('./unidade-list/unidade-list.module').then( m => m.UnidadeListPageModule)},
-         {path: 'unidade-form', loadChildren: () => import('./unidade-form/unidade-form.module').then( m => m.UnidadeFormPageModule)}
-      ]
+    component: UnidadeTabsPage
   },
   {
     path: 'unidade-form',
-    component: UnidadeFormPage,
-    children: [
-      {path: '', component: UnidadeFormPage},
-      {path: ':id/edit', component: UnidadeFormPage}
-    ]
+    pathMatch: 'full',
+    loadChildren: () => import('./form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+  },
+  {
+    path: 'unidade/unidade-form/edit/:id',
+    pathMatch: 'full',
+    loadChildren: () => import('./form/unidade-form.module').then( m => m.UnidadeFormPageModule)
+  }, 
+  {
+    path: 'unidade/unidade-list',
+    loadChildren: () => import('./form-list/unidade-list.module').then( m => m.UnidadeListPageModule)
   },
   {
     path: 'menu-principal',

@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LocalFormPage
   },
   {
-    path: 'local-form/:id/edit',
+    path: 'locais/local-form/edit/:id',    
     pathMatch: 'full',
     component: LocalFormPage
   }  

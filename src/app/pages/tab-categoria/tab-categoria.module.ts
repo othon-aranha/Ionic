@@ -13,7 +13,7 @@ import { TabCategoriaPage } from './tab-categoria.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TabCategoriaPageRoutingModule
+    TabCategoriaPageRoutingModule,
   ],
   declarations: [TabCategoriaPage]
 })

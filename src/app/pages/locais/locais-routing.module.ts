@@ -15,10 +15,12 @@ const routes: Routes = [
   },  
   {
     path: 'local-form',
+    pathMatch: 'full',
     loadChildren: () => import('./form/local-form.module').then( m => m.LocalFormPageModule)
   },
   {
-    path: 'local-form/:id/edit',
+    path: 'locais/local-form/edit/:id',
+    pathMatch: 'full',
     loadChildren: () => import('./form/local-form.module').then( m => m.LocalFormPageModule)
   }, 
   {

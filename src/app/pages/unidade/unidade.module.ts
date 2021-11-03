@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { UnidadeTabsPageRoutingModule } from './tabs/unidade-tabs-routing.module';
 import { UnidadeService } from '../../service/unidade.service';
 import { UnidadeTabsPageModule } from './tabs/unidade-tabs.module';
-import { UnidadeFormPageModule } from './unidade-form/unidade-form.module';
-import { UnidadeListPageModule } from './unidade-list/unidade-list.module';
+import { UnidadeFormPageModule } from './form/unidade-form.module';
+import { UnidadeListPageModule } from './form-list/unidade-list.module';
 
 @NgModule({
   imports: [

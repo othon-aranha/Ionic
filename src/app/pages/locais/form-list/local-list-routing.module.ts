@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: LocalListPage
+  }, 
+  {
+    path: 'edit/:id',
+    loadChildren: () => import('../form/local-form.module').then( m => m.LocalFormPageModule)
   }
 ];
 

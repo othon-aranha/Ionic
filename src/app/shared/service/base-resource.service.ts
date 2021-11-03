@@ -37,7 +37,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   getById(id: any): Observable<T> {
     const url = `${this.apiPath}/${id}`;
 
-    return this.http.get(url, {headers: this.headers})
+    return this.http.get<T>(url, {headers: this.headers})
     .pipe(
       this.handleError
     );  

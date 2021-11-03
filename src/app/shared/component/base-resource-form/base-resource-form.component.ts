@@ -85,6 +85,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   clearValuesForm(): void {
     Object.keys(this.resourceForm.controls).forEach((key) => {
        this.resourceForm.get(key).setValue(null);
+       this.resourceForm.get(key).markAsTouched()
      });
   }
 
@@ -122,9 +123,10 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected loadResource() {
     if (this.currentAction === 'edit') {
 
-      this.route.paramMap.pipe(
+      /* this.route.paramMap.pipe(
         switchMap(params => this.resourceService.getById(params.get('id')))
-      )
+      ) */
+      this.resourceService.getById(this.id)
       .subscribe(
         (resource) => {
           this.resource = resource;

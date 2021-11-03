@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { Local } from 'src/app/model/local';
-import { LocalService } from 'src/app/service/local.service';
+import { Local } from '../../../model/local';
+import { LocalService } from '../../../service/local.service';
 
 @Component({
   selector: 'app-tabs',

@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { Reserva } from 'src/app/model/reserva';
-import { ReservaService } from 'src/app/service/reserva.service';
+import { Reserva } from '../../../model/reserva';
+import { ReservaService } from '../../../service/reserva.service';
 
 
 
