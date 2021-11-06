@@ -21,7 +21,14 @@ export class UnidadeFormPage extends BaseResourceFormComponent<Unidade>  impleme
   }
 
   ngOnInit() {
-    super.ngOnInit();
+    this.getParamId();
+    if ( this.id != undefined ) {
+      this.currentAction = 'edit';
+      this.buildResourceForm();
+      this.loadResource();
+    } else {
+      super.ngOnInit();
+    }
     this.blocado = false;
   }
 
@@ -31,11 +38,12 @@ export class UnidadeFormPage extends BaseResourceFormComponent<Unidade>  impleme
 
 
   protected onAfterloadResource(): void {
-    throw new Error('Method not implemented.');
+    // throw new Error('Method not implemented.');
   }
 
   protected buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
+      id: new FormControl(this.resource.id, [] ),
       nrAp: new FormControl(this.resource.nrAp, [Validators.required, Validators.minLength(3), Validators.maxLength(4)] ),
       nmProprietario: new FormControl(this.resource.nmProprietario, [Validators.required, Validators.minLength(1)] ),
       locado: new FormControl(this.resource.locado, [Validators.required] ),

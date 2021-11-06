@@ -100,7 +100,8 @@ export class ReservaFormPage extends BaseResourceFormComponent<Reserva> implemen
       this.resourceForm.get("dtSolicitacao").setValue(this.dtInicial);
       this.resourceForm.get("statusReserva").setValue(0);
       super.submitForm();
-      if ( this.serverErrorMessages.length === 0 ) {
+      if ( ( this.serverErrorMessages != null ) && 
+           ( this.serverErrorMessages.length === 0 ) ) {
         this.clearForm();  
       } 
       

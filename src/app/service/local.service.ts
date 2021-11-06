@@ -22,6 +22,7 @@ export class LocalService extends BaseResourceService<Local> {
   }
 
   recuperarLocal(id: string): Observable<Local> {
-    return super.getById(id);
+    //return this.getById(id);
+    return this.http.get<Local>(this.apiPath+'/'+id);
   }
 }

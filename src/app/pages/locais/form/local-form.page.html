@@ -9,14 +9,18 @@
   <form [formGroup]="resourceForm" (ngSubmit)="submitForm()">
 
     <ion-item>
-      <ion-label>Local</ion-label>
-      <ion-input type="text" formControlName="dsLocal"></ion-input>
+      <ion-label color="primary">Local</ion-label>      
     </ion-item>     
+    <ion-item>
+      <ion-input type="text" formControlName="dsLocal"></ion-input>
+    </ion-item>
 
     <ion-item>
-      <ion-label>Valor Locação</ion-label>
-      <ion-input type="number" formControlName="vlrLocacao"></ion-input>
+      <ion-label color="primary">Valor Locação</ion-label>      
     </ion-item> 
+    <ion-item>
+      <ion-input type="number" formControlName="vlrLocacao"></ion-input>
+    </ion-item>
 
 
   </form>    

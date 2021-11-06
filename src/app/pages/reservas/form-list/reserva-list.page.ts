@@ -5,6 +5,7 @@ import { ReservaService } from '../../../service/reserva.service';
 import { Reserva } from '../../../model/reserva';
 import { Location } from '@angular/common';
 import { AlertService } from '../../../shared/providers/alert/alert.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-reserva-list',
@@ -42,9 +43,9 @@ export class ReservaListPage implements OnInit {
    }
 
   ngOnInit() {
-    let agora = new Date();
-    this.DataSel = "";
+    let agora = new Date();    
     this.anoMin = agora.getFullYear().toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
+    this.DataSel = this.anoMin;
     this.anoMax = (agora.getFullYear()+1).toString().concat("-").concat(agora.getMonth().toString().padStart(2,"0"));
     this.InitServices();
     this.populaLocais();
@@ -62,10 +63,11 @@ export class ReservaListPage implements OnInit {
       reserva.dtConfirmacao = new Date().toTimeString();   
       this.reservaService.update(reserva)
       .subscribe(
-        resource => reserva,
+        (resource) => {
+          reserva;
+          this.consultaReservas();
+        },
         error => this.actionsForError(error)
-      ).add(
-        this.consultaReservas() 
       );
 
       
@@ -74,14 +76,13 @@ export class ReservaListPage implements OnInit {
 
   private excluirReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma exclusão da reserva ?', () => {
-      this.reservaService.delete(reserva.id)
-      .pipe()
-      .subscribe(        
-        error => this.actionsForError(error)
-      ).add(
-        this.consultaReservas() 
-      )
-    });
+      this.reservaService.delete(reserva.id)      
+      .subscribe( () => {
+        this.consultaReservas();
+      },       
+      error => this.actionsForError(error)       
+    );
+  });
   }
 
   private populaLocais() {
@@ -126,8 +127,10 @@ export class ReservaListPage implements OnInit {
     this.alertSrv.toast('Ocorreu um erro ao processar a sua solicitação!', 'top');
     this.msgs = [];
     this.msgs.push({ severity: 'error', summary: 'Ocorreu um erro ao processar a sua solicitação!'});
-
-    if (error.status === 422) {
+    
+    if (error.status === 400) {
+      this.serverErrorMessages = JSON.parse(error._body).errors;
+    }else if (error.status === 422) {
       this.serverErrorMessages = JSON.parse(error._body).errors;
     } else {
       this.serverErrorMessages = ['Falha na comunicação com o servidor. Por favor, tente mais tarde.'];

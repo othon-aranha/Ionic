@@ -39,7 +39,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
 
     return this.http.get<T>(url, {headers: this.headers})
     .pipe(
-      this.handleError
+      catchError(this.handleError)
     );  
   }
 

@@ -9,6 +9,9 @@ import { BaseResourceService } from '../../service/base-resource.service';
 import { switchMap, catchError } from 'rxjs/operators';
 
 import { Location } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { exit } from 'process';
+import { stringify } from 'querystring';
 
 
 
@@ -75,7 +78,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
           this.createResource();
         } else { // currentAction == "edit"
           this.FieldKeyReadOnly = true;
-          this.resourceForm.get('id').setValue(this.id);
+          if ( this.resourceForm.contains('id') ) {
+            this.resourceForm.get('id').setValue(this.id);
+          }
           this.updateResource();
         }
       });
@@ -85,7 +90,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   clearValuesForm(): void {
     Object.keys(this.resourceForm.controls).forEach((key) => {
        this.resourceForm.get(key).setValue(null);
-       this.resourceForm.get(key).markAsTouched()
+       this.resourceForm.get(key).markAsUntouched();
      });
   }
 
@@ -198,15 +203,35 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
+  extractMsgError(error: HttpErrorResponse): string {
+    let msg: string;
+    Object.keys(error.error).forEach(
+     (key) => { if ( key === "msg" ) {
+       msg = error.error[key];
+       exit; 
+     } 
+     }
+    );  
+     return msg;
+  }
+
 
   protected actionsForError(error) {
-    this.alertSrv.toast('Ocorreu um erro ao processar a sua solicitação!', 'top');
-    this.msgs = [];
-    this.msgs.push({ severity: 'error', summary: 'Ocorreu um erro ao processar a sua solicitação!'});
+    if ( error.status > 499 )
+      this.alertSrv.toast('Ocorreu um erro ao processar a sua solicitação!', 'top');
+    // this.msgs = [];
+    //  this.msgs.push({ severity: 'error', summary: 'Ocorreu um erro ao processar a sua solicitação!'});
 
+  
+    let txtError: string; 
+    txtError = this.extractMsgError(error);
+    
     this.submittingForm = false;
-
-    if (error.status === 422) {
+    if ( error.status === 400  ){
+      this.alertSrv.toast(txtError, 'top');
+      this.msgs = [];
+      this.msgs.push({ severity: 'error', summary: txtError});  
+    }else if ( error.status === 422) {
       this.serverErrorMessages = JSON.parse(error._body).errors;
     } else {
       this.serverErrorMessages = ['Falha na comunicação com o servidor. Por favor, tente mais tarde.'];
