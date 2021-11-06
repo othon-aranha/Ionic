@@ -1,9 +1,0 @@
-{
-  "name": "Condominio",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular",
-  "id": "07645abf"
-}
