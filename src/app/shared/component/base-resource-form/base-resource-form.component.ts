@@ -227,15 +227,21 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     txtError = this.extractMsgError(error);
     
     this.submittingForm = false;
-    if ( error.status === 400  ){
-      this.alertSrv.toast(txtError, 'top');
-      this.msgs = [];
-      this.msgs.push({ severity: 'error', summary: txtError});  
-    }else if ( error.status === 422) {
-      this.serverErrorMessages = JSON.parse(error._body).errors;
-    } else {
-      this.serverErrorMessages = ['Falha na comunicação com o servidor. Por favor, tente mais tarde.'];
-    }
+    switch (error.status) {
+      case 500.599:
+        break;
+      case 400:
+        this.alertSrv.toast(txtError, 'top');
+        this.msgs = [];
+        this.msgs.push({ severity: 'error', summary: txtError});          
+        break;
+      case 422:
+        this.serverErrorMessages = JSON.parse(error._body).errors;
+        break;
+      default:
+        this.serverErrorMessages = ['Falha na comunicação com o servidor. Por favor, tente mais tarde.'];
+        break;
+    } 
   }
 
 
