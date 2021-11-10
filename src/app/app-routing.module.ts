@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full'  
+  },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -39,7 +43,6 @@ const routes: Routes = [
     path: 'locais',
     loadChildren: () => import('./pages/locais/locais.module').then( m => m.LocaisPageModule)
   }
-
 ];
 
 @NgModule({
