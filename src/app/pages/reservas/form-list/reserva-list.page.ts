@@ -20,9 +20,9 @@ export class ReservaListPage implements OnInit {
   public customMonthShortNames="jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez";
   public customCancelText="Cancelar";
   public customDoneText="Ok";
-  private anoMin: string;
-  private anoMax: string;
-  private DataSel: string;
+  public anoMin: string;
+  public anoMax: string;
+  public DataSel: string;
   vrLocal: string[];  
 
   serverErrorMessages: string[] = null;
@@ -57,7 +57,7 @@ export class ReservaListPage implements OnInit {
     this.reservaService = new ReservaService(this.injector);
   }
 
-  private confirmarReserva(reserva: Reserva) {
+  public confirmarReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma a reserva ?', () => {
       reserva.statusReserva = 1;
       reserva.dtConfirmacao = new Date().toTimeString();   
@@ -74,7 +74,7 @@ export class ReservaListPage implements OnInit {
     });
   }
 
-  private excluirReserva(reserva: Reserva) {
+  public excluirReserva(reserva: Reserva) {
     this.alertSrv.Confirm('Confirmação', 'Confirma exclusão da reserva ?', () => {
       this.reservaService.delete(reserva.id)      
       .subscribe( () => {
@@ -97,7 +97,7 @@ export class ReservaListPage implements OnInit {
     );
   }
 
-  private consultaReservas(){   
+  public consultaReservas(){   
     this.reservas = [];
     let anoMes: string;
     if ( ( this.anoMin != undefined ) ) {
