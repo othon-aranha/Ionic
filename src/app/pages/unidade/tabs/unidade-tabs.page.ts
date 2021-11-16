@@ -27,7 +27,7 @@ export class UnidadeTabsPage implements OnInit {
         this.unidades = resource;
         this.numUnidades = this.unidades.length;
       },
-      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+      (error) => alert('Ocorreu um erro ao acessar o serviço (' + this.unidadeService.apiPath  + '). Erro:' + this.unidadeService.extractMsgError(error) )
     );
   }
 

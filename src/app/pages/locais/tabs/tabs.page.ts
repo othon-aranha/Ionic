@@ -25,7 +25,15 @@ export class TabsPage implements OnInit {
         this.locais = resource;
         this.numLocais = this.locais.length;
       },
-      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+      (error) => {
+        let msg = this.localService.extractMsgError(error);
+        if ( msg !== undefined ) {
+          alert('Ocorreu um erro ao acessar o serviço (' + this.localService.apiPath  + '). Erro:' + msg );  
+        } else {
+          alert('Ocorreu um erro ao acessar o serviço (' + this.localService.apiPath  + ').');  
+        } 
+        
+      }
     );
   }
 

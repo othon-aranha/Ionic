@@ -27,7 +27,7 @@ export class TabsPage implements OnInit {
         this.reservas = resource;
         this.numReservas = this.reservas.length;
       },
-      (error) => alert('Ocorreu um erro no servidor, tente mais tarde.')
+      (error) => alert('Ocorreu um erro ao acessar o serviço (' + this.reservaService.apiPath  + '). Erro:' + this.reservaService.extractMsgError(error) )
     );
   }
 }

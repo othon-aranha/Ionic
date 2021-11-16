@@ -2,28 +2,32 @@ import { BaseResourceModel } from '../model/base-resource-model';
 import { Injectable } from '@angular/core';
 
 import { Injector } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { BaseService } from './base-service.service';
+import { environment } from '../../../environments/environment';
+import { exitCode } from 'process';
 
 @Injectable({
   providedIn: 'root'
 })
 export abstract class BaseResourceService<T extends BaseResourceModel>  {
-  protected host ='192.168.68.105';
-  protected port = '8082';
+
 
   protected http: HttpClient;
 
   protected headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   
+  error: HttpErrorResponse;
+  
   constructor(
-    protected apiPath: string,
+    public apiPath: string,
     protected injector: Injector,
     protected jsonDataToResourceFn: (jsonData: any) => T
   ) {
+    this.apiPath = environment.apiProtocol + environment.apiHost + ':' + environment.apiPort + '/' + this.apiPath; 
     this.http = injector.get(HttpClient);
   }
 
@@ -113,8 +117,38 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   }
 
   protected handleError(error: any): Observable<any> {
-    console.log('Erro na requisiçao => ', error);
+    this.error = error;
+    console.log('Erro ao tentar acessar a url ( ' + this.apiPath + ' ). Erro retornado: ', error);
     return throwError(error);
+  }
+
+  protected getStringError(): String {
+    return this.extractMsgError(this.error);
+  }
+  
+
+  extractMsgError(error: HttpErrorResponse): string {
+    let msg: string;
+    if( error.status == 0 ){    Object.keys(error).forEach(
+      (key) => { if ( key === "message" ) {
+        msg = error[key];
+        exitCode; 
+      } 
+      }
+     );
+
+
+    } else {
+      Object.keys(error.error).forEach(
+        (key) => { if ( key === "msg" ) {
+          msg = error.error[key];
+          exitCode; 
+        } 
+        }
+       );
+    }
+  
+     return msg;
   }
 
 }
