@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'reservas',
-    loadChildren: () => import('../reservas/reservas-routing.module').then( m => m.ReservasPageRoutingModule)
+    loadChildren: () => import('../reserva/reservas-routing.module').then( m => m.ReservasPageRoutingModule)
   }
 ];
 

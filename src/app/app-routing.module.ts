@@ -24,16 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/minha-conta/minha-conta.module').then( m => m.MinhaContaPageModule)
   },
   {
-    path: 'tab-categoria',
-    loadChildren: () => import('./pages/tab-categoria/tab-categoria.module').then( m => m.TabCategoriaPageModule)
-  },
-  {
     path: 'menu-principal',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
   },
   {
     path: 'reservas',
-    loadChildren: () => import('./pages/reservas/reservas.module').then( m => m.ReservasPageModule)
+    loadChildren: () => import('./pages/reserva/reservas.module').then( m => m.ReservasPageModule)
   },
   {
     path: 'unidade',
@@ -41,7 +37,7 @@ const routes: Routes = [
   },
   {
     path: 'locais',
-    loadChildren: () => import('./pages/locais/locais.module').then( m => m.LocaisPageModule)
+    loadChildren: () => import('./pages/local/locais.module').then( m => m.LocaisPageModule)
   }
 ];
 
