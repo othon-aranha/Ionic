@@ -1,15 +1,17 @@
-ion-item {
-  --background: var(--ion-color-secondary-tint);
-}
-
-ion-content {
-  --background: var(--ion-color-secondary-tint);
-}
-
 ion-toggle {
-    --background: green;
-    --background-checked: red;
-  
-    --handle-background: red;
-    --handle-background-checked: green;
+  --background: green;
+  --background-checked: red;
+
+  --handle-background: red;
+  --handle-background-checked: green;
 }
+
+ion-footer {
+ion-toolbar {
+  color: var(--ion-color-primary);
+}
+}
+
+ion-content form ion-item ion-label {
+color: var(--ion-color-primary);
+} 

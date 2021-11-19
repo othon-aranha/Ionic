@@ -30,11 +30,11 @@ export class MenuPrincipalPage implements OnInit {
   ngOnInit() {
 
    this.appMenuItems = [
-        {title: 'Administração', color: 'light', /* component: null, */ icon: 'options'},
-        {title: 'Local', color: 'light',  route: 'locais', /* component: null, */ icon: 'card'},
-        {title: 'Unidade', color: 'light',  route: 'unidade', /* component: null, */ icon: 'people'},
-        {title: 'Reserva', color: 'light',  route: 'reservas', /* component: null, */ icon: 'attach'},
-        {title: 'Sair', color: 'light',  route: '', /* component: null, */ icon: 'exit'}
+        {title: 'Condomínio', color: 'light', route: 'condominios', icon: 'business-outline'},
+        {title: 'Local', color: 'light',  route: 'locais', /* component: null, */ icon: 'card-outline'},
+        {title: 'Unidade', color: 'light',  route: 'unidade', /* component: null, */ icon: 'home-outline'},
+        {title: 'Reserva', color: 'light',  route: 'reservas', /* component: null, */ icon: 'attach-outline'},
+        {title: 'Sair', color: 'light',  route: '', /* component: null, */ icon: 'exit-outline'}
     ];
     
 

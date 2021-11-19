@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   { path: '', 
@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'reservas',
     loadChildren: () => import('./pages/reserva/reservas.module').then( m => m.ReservasPageModule)
+  },
+  {
+    path: 'condominios',
+    loadChildren: () => import('./pages/condominio/condominios.module').then( m => m.CondominiosPageModule)
   },
   {
     path: 'unidade',

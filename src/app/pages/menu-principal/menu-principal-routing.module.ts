@@ -23,6 +23,10 @@ const routes: Routes = [
   {
     path: 'reservas',
     loadChildren: () => import('../reserva/reservas-routing.module').then( m => m.ReservasPageRoutingModule)
+  },
+  {
+    path: 'condominios',
+    loadChildren: () => import('../condominio/condominios-routing.module').then( m => m.CondominiosPageRoutingModule)
   }
 ];
 
