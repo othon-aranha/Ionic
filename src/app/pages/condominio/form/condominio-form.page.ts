@@ -23,13 +23,13 @@ export class CondominioFormPage extends BaseResourceFormComponent<Condominio> im
 
   protected buildResourceForm() {
     this.resourceForm = this.formBuilder.group({
-      nome: new FormControl(this.resource.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(4)] ),
-      endereco: new FormControl(this.resource.endereco, [Validators.required, Validators.minLength(1)] ),
-      bairro: new FormControl(this.resource.bairro, [Validators.required] ),
-      cep: new FormControl(this.resource.cep, [Validators.required] ),
-      razao_social: new FormControl(this.resource.razao_social, [Validators.required] ),
-      cnpj: new FormControl(this.resource.cnpj, [Validators.required] ),
-      cidade: new FormControl(this.resource.cidade, [Validators.required] )
+      nome: new FormControl(this.resource.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(120)] ),
+      endereco: new FormControl(this.resource.endereco, [Validators.required, Validators.minLength(3), Validators.maxLength(120)] ),
+      bairro: new FormControl(this.resource.bairro, [Validators.required, Validators.minLength(3), Validators.maxLength(100)] ),
+      cep: new FormControl(this.resource.cep, [Validators.required, Validators.minLength(8), Validators.maxLength(8)] ),
+      razao_social: new FormControl(this.resource.razao_social, [Validators.required, Validators.minLength(3), Validators.maxLength(100)] ),
+      cnpj: new FormControl(this.resource.cnpj, [Validators.required, , Validators.minLength(14), Validators.maxLength(14)] ),
+      cidade: new FormControl(this.resource.cidade, [Validators.required, , Validators.minLength(3), Validators.maxLength(100)] )
     });
   }
 

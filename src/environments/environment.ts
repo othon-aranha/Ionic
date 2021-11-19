@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiProtocol: 'http://',
-  apiHost: '192.168.68.103',
+  apiHost: '192.168.68.101',
   apiPort: '8082'
 };
 

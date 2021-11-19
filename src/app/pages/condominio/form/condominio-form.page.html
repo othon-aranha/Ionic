@@ -10,32 +10,37 @@
  
     <ion-item>
       <ion-label>Nome</ion-label>  
-      <ion-input></ion-input>
+      <ion-input formControlName="nome" ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Endereço</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="endereco"></ion-input>
     </ion-item>    
 
     <ion-item>
       <ion-label>Bairro</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="bairro"></ion-input>
     </ion-item>        
 
     <ion-item>
       <ion-label>CEP</ion-label>
-      <ion-input type="number" minlength="8" maxlength="8" min="1" max="99999999"></ion-input>
+      <ion-input type="number" formControlName="cep" minlength="8" maxlength="8" min="1" max="99999999"></ion-input>
     </ion-item>            
 
     <ion-item>
       <ion-label>Cidade</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="cidade"></ion-input>
     </ion-item>
     
     <ion-item>
+      <ion-label>CNPJ</ion-label>
+      <ion-input type="number" formControlName="cnpj" minlength="14" maxlength="14"></ion-input>
+    </ion-item>   
+
+    <ion-item>
       <ion-label>Razão Social</ion-label>
-      <ion-input></ion-input>
+      <ion-input formControlName="razao_social"></ion-input>
     </ion-item>    
 
 </form>
