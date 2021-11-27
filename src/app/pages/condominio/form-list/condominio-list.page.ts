@@ -5,7 +5,7 @@ import { CondominioService } from '../../../service/condominio';
 
 
 @Component({
-  selector: 'app-local-list',
+  selector: 'app-condominio-list',
   templateUrl: './condominio-list.page.html',
   styleUrls: ['./condominio-list.page.scss'],
 })
