@@ -18,7 +18,14 @@ export class CondominioFormPage extends BaseResourceFormComponent<Condominio> im
   }
 
   ngOnInit() {
-    super.ngOnInit();
+    this.getParamId();
+    if ( this.id != undefined ) {
+      this.currentAction = 'edit';
+      this.buildResourceForm();
+      this.loadResource();
+    } else {
+      super.ngOnInit();
+    }
   }
 
   protected buildResourceForm() {

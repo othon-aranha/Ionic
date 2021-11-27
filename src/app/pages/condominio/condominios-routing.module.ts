@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'condominio-form',
     loadChildren: () => import('./form/condominio-form.module').then( m => m.CondominioFormPageModule)
+  },
+  {
+    path: 'condominio-list',
+    loadChildren: () => import('./form-list/condominio-list.module').then( m => m.CondominioListPageModule)
   }
 
 ];

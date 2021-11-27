@@ -12,7 +12,7 @@ export class CondominioService extends BaseResourceService<Condominio>  {
    }
 
    protected getAllSufix(): string {
-     return '/condominio';
+     return '/condominios';
    }
 
 }
