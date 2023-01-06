@@ -13,12 +13,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "~8.1.2",
-    "@angular/core": "~8.1.2",
-    "@angular/forms": "~8.1.2",
-    "@angular/platform-browser": "~8.1.2",
-    "@angular/platform-browser-dynamic": "~8.1.2",
-    "@angular/router": "~8.1.2",
+    "@angular/common": "~8.2.14",
+    "@angular/core": "~8.2.14",
+    "@angular/forms": "~8.2.14",
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
     "@capacitor/android": "^2.5.0",
     "@capacitor/core": "^2.4.0",
     "@ionic-native/core": "^5.36.0",
@@ -45,10 +45,10 @@
     "@angular-devkit/build-angular": "^0.803.29",
     "@angular-devkit/core": "~8.1.2",
     "@angular-devkit/schematics": "~8.1.2",
-    "@angular/cli": "8.1.3",
-    "@angular/compiler": "~8.1.2",
-    "@angular/compiler-cli": "~8.1.2",
-    "@angular/language-service": "~8.1.2",
+    "@angular/cli": "8.3.29",
+    "@angular/compiler": "~8.2.14",
+    "@angular/compiler-cli": "~8.2.14",
+    "@angular/language-service": "~8.2.14",
     "@capacitor/cli": "^2.4.0",
     "@ionic/angular-toolkit": "^2.3.3",
     "@types/jasmine": "~3.3.8",
@@ -65,7 +65,7 @@
     "protractor": "^5.4.4",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.5.3"
   },
   "description": "Project de Automação de Condomínios"
 }
