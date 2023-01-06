@@ -33,7 +33,7 @@
     "ionicons": "^5.5.4",
     "rxjs": "^7.8.0",
     "set-value": "^2.0.1",
-    "socket.io-parser": "^3.2.0",
+    "socket.io-parser": "^3.3.3",
     "sqlite3": "^5.0.2",
     "tar": "^2.2.2",
     "tslib": "^1.14.1",
