@@ -19,7 +19,6 @@ registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, SharedModule, ReactiveFormsModule, AppRoutingModule],
   providers: [
     StatusBar,
