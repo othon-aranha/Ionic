@@ -2,18 +2,18 @@ import { AlertService } from '../../providers/alert/alert.service';
 import { OnInit, AfterContentChecked, Injector } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 import { BaseResourceModel } from '../../model/base-resource-model';
 import { BaseResourceService } from '../../service/base-resource.service';
 
-import { switchMap, catchError } from 'rxjs/operators';
 
 import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { exit } from 'process';
+// import { exit } from 'process';
 
 
-
+@Injectable()
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit, AfterContentChecked {
 
   id: any;
@@ -22,9 +22,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   currentAction: string;
   resourceForm: FormGroup;
   pageTitle: string;
-  serverErrorMessages: string[] = null;
+  serverErrorMessages: string[];
   submittingForm = false;
-  msgs = [];
+  msgs = [{ severity: '', summary: '' }];
   FieldKeyReadOnly: boolean;
 
   protected route: ActivatedRoute;
@@ -101,7 +101,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
         if ( this.resourceForm.get(key).status === 'INVALID' ) {
           this.alertSrv.toast('O campo ' + key + ' está inválido', 'bottom');
           this.msgs = [];
-          this.msgs.push({ severity: 'info', summary: 'O campo ' + key + ' está inválido'});
+          const newLocal = { severity: 'info', summary: 'O campo ' + key + ' está inválido' };
+          this.msgs.push(newLocal);
           retorno = false;
         }
        });
@@ -203,11 +204,11 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   extractMsgError(error: HttpErrorResponse): string {
-    let msg: string;
+    let msg: string = "";
     Object.keys(error.error).forEach(
      (key) => { if ( key === "msg" ) {
        msg = error.error[key];
-       exit; 
+       //exit; 
      } 
      }
     );  
@@ -232,7 +233,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       case 400:
         this.alertSrv.toast(txtError, 'top');
         this.msgs = [];
-        this.msgs.push({ severity: 'error', summary: txtError});          
+        const newLocal = { severity: 'error', summary: txtError };
+        this.msgs.push(newLocal);          
         break;
       case 422:
         this.serverErrorMessages = JSON.parse(error._body).errors;

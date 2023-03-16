@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { LocaisPageRoutingModule } from './locais-routing.module';
-import { TabsPage } from './tabs/tabs.page';
+//import { TabsPageLocal } from './tabs/tabs.page';
 
 
 @NgModule({
@@ -15,6 +15,6 @@ import { TabsPage } from './tabs/tabs.page';
     IonicModule,
     LocaisPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: []
 })
 export class LocaisPageModule {}

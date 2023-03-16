@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { BaseService } from './base-service.service';
 import { environment } from '../../../environments/environment';
-import { exitCode } from 'process';
+//import { exitCode } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -128,11 +128,11 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
   
 
   extractMsgError(error: HttpErrorResponse): string {
-    let msg: string;
+    let msg: string = "";
     if( error.status == 0 ){    Object.keys(error).forEach(
       (key) => { if ( key === "message" ) {
         msg = error[key];
-        exitCode; 
+        //break; 
       } 
       }
      );
@@ -142,7 +142,7 @@ export abstract class BaseResourceService<T extends BaseResourceModel>  {
       Object.keys(error.error).forEach(
         (key) => { if ( key === "msg" ) {
           msg = error.error[key];
-          exitCode; 
+          //exitCode; 
         } 
         }
        );

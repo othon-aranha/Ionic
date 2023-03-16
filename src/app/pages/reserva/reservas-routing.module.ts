@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TabsPage } from './tabs/tabs.page';
+import { TabsPageReserva } from './tabs/tabs.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage
+    component: TabsPageReserva
   },
   {
     path: 'reservas',
-    component: TabsPage
+    component: TabsPageReserva
   },  
   {
     path: 'reserva-list',

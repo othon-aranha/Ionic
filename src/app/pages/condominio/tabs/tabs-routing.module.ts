@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TabsPage } from './tabs.page';
+import { TabsPageCondominio } from './tabs.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage
+    component: TabsPageCondominio
   },  
   {
     path: 'condominios',
-    component: TabsPage
+    component: TabsPageCondominio
   },
   {
     path: 'condominio-form',

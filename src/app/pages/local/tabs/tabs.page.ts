@@ -7,7 +7,7 @@ import { LocalService } from '../../../service/local.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPageLocal implements OnInit {
 
   numLocais: number;
   locais:  Local[];

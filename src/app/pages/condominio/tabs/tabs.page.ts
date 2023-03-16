@@ -11,7 +11,7 @@ import { ReservaService } from '../../../service/reserva.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPageCondominio implements OnInit {
   
   numCondominios: number;
   condominios:  Condominio[];

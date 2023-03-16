@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 
-import { TabsPage } from './tabs/tabs.page';
+// import { TabsPage } from './tabs/tabs.page';
 import { CondominiosPageRoutingModule } from './condominios-routing.module';
 import { CondominioService } from '../../service/condominio';
 
@@ -17,7 +17,7 @@ import { CondominioService } from '../../service/condominio';
     IonicModule,
     CondominiosPageRoutingModule
   ]
-  , declarations: [TabsPage]
+  , declarations: []
   , providers: [CondominioService]
 })
 export class CondominiosPageModule {}

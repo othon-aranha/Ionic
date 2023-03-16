@@ -9,7 +9,7 @@ import { ReservaService } from '../../../service/reserva.service';
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPageReserva implements OnInit {
   
   numReservas: number;
   reservas:  Reserva[];
